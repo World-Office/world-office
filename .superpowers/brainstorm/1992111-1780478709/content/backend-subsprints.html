@@ -1,0 +1,72 @@
+<h2>Backend Implementation — Sub-Sprint Breakdown</h2>
+<p class="subtitle">wo-ooxml PPTX extension split into 3 independent sub-sprints</p>
+
+<div class="section">
+  <h3>Sub-Sprint 1: Slide Manager (Frontend-Only)</h3>
+  <p>No PPTX backend needed yet. JSON-native for storage.</p>
+  <ul>
+    <li><strong>SlideThumbnails</strong> — list/select/add/delete/duplicate slides</li>
+    <li><strong>SlideCanvas</strong> — render slide background, slide navigation</li>
+    <li><strong>Slide navigation</strong> — previous/next, jump to slide</li>
+    <li><strong>Storage</strong> — save/load as JSON (temp, replaced in SS2)</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>Sub-Sprint 2: PPTX Backend (wo-ooxml Extension)</h3>
+  <p>Pure Rust, independently testable with <code>cargo test</code>.</p>
+  <ul>
+    <li><strong>Phase 1:</strong> PptxPresentation model + minimal PPTX serializer (create PPTX from scratch)</li>
+    <li><strong>Phase 2:</strong> PPTX parser (read existing PPTX files)</li>
+    <li><strong>Phase 3:</strong> Roundtrip tests + FormatRoundtrip integration</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>Sub-Sprint 3: Content Editing (Frontend + Backend Integration)</h3>
+  <p>Wire frontend to real PPTX backend.</p>
+  <ul>
+    <li>Shape CRUD — add/move/resize text boxes, images on canvas</li>
+    <li>Text editing — inline formatting via toolbar</li>
+    <li>Image insertion — upload + embed in PPTX</li>
+    <li>Properties panel — selected shape position/size/text props</li>
+  </ul>
+</div>
+
+<div class="cards" style="margin-top:24px">
+  <div class="card">
+    <div class="card-body">
+      <h3>Proposed Order</h3>
+      <p><strong>SS1 → SS2 → SS3</strong><br/>
+      Frontend scaffolding first, then backend, then integration.<br/>
+      Each sub-sprint independently testable.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Question: Start with which sub-sprint?</h3>
+  <div class="options" style="margin-top:8px">
+    <div class="option" data-choice="ss1" onclick="toggleSelect(this)">
+      <div class="letter">1</div>
+      <div class="content">
+        <h3>SS1: Slide Manager</h3>
+        <p>Immediately visible progress. JSON-native, no backend needed yet. ~1 week.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="ss2" onclick="toggleSelect(this)">
+      <div class="letter">2</div>
+      <div class="content">
+        <h3>SS2: PPTX Backend</h3>
+        <p>Foundation first. Frontend stays untouched until backend is solid. ~1.5 weeks.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="ss3" onclick="toggleSelect(this)">
+      <div class="letter">3</div>
+      <div class="content">
+        <h3>SS3: Content Editing</h3>
+        <p>Build on existing JSON demo. Add shape editing immediately. ~1 week.</p>
+      </div>
+    </div>
+  </div>
+</div>

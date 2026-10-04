@@ -1,0 +1,43 @@
+<h2>Slides Editor MVP — Proposed Layout</h2>
+<p class="subtitle">The editor UI follows the same pattern as our document editor, adapted for slides</p>
+
+<div class="section">
+  <h3>Three Approaches for Data Storage</h3>
+  <p>Before we dive into the UI, let's decide the technical foundation:</p>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3><strong>Recommended</strong> — JSON-Native + PPTX Export</h3>
+      <p>Store presentations as JSON. Generate PPTX only on export via a simple OOXML builder. No PPTX import.</p>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Pros</h4><ul><li>Fastest to implement</li><li>Simple data model</li><li>No complex OOXML parsing</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Can't open existing PPTX files</li><li>Need to build export path from scratch</li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>OOXML-Native — Full PPTX Roundtrip</h3>
+      <p>Build wo-pptx format crate (following wo-docx pattern). Store/load as PPTX internally.</p>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Pros</h4><ul><li>Full format compatibility</li><li>Can open any existing PPTX</li><li>Follows established patterns</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>2-3x more backend work</li><li>Complex OOXML schema</li><li>Heavy for MVP</li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Hybrid — JSON Editing + PPTX Export + Simple Import</h3>
+      <p>JSON for fast editing. Build a minimal PPTX export &amp; a basic outline importer (text extraction from OOXML).</p>
+      <div class="pros-cons" style="margin-top:8px">
+        <div class="pros"><h4>Pros</h4><ul><li>Fast editing experience</li><li>Can import basic PPTX content</li><li>Real PPTX output</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Two formats to maintain</li><li>Import will be lossy for complex decks</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+
+# wo-orchestrator worktrees (do not commit)
+.wo-worktrees/
+
+# wo-orchestrator worktrees (do not commit)
+.wo-worktrees/
+
+# wo-orchestrator worktrees (do not commit)
+.wo-worktrees/
+
+# agentflow campaign state
+.af-state/
+.pytest_cache/
+.playwright-mcp/
+.until-done/
+.tf-worktrees/
+.wo-worktrees/
+*.log

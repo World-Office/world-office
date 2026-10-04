@@ -1,0 +1,38 @@
+<h2>Slides Editor — Design Proposal</h2>
+<p class="subtitle">Building on wo-ooxml for native PPTX roundtrip</p>
+
+<div class="section">
+  <h3>Architecture (OOXML-Native)</h3>
+  <p><strong>Data flow:</strong> PPTX file → wo-ooxml parser (extended) → PresentationStore (MobX) → Canvas renderer → wo-ooxml serializer (extended) → PPTX file</p>
+  <p>Follows the same pattern as wo-docx: parse OOXML ZIP into typed model, edit in memory, serialize back.</p>
+</div>
+
+<div class="section">
+  <h3>Backend: wo-ooxml PPTX Extension</h3>
+  <p>Add to existing wo-ooxml crate:</p>
+  <ul>
+    <li><strong>Model types</strong> — <code>PptxPresentation</code>, <code>Slide</code>, <code>SlideShape</code>, <code>Placeholder</code></li>
+    <li><strong>PPTX parser</strong> — read <code>ppt/slides/slide*.xml</code>, <code>ppt/slideLayouts/*.xml</code>, <code>ppt/presentation.xml</code></li>
+    <li><strong>PPTX serializer</strong> — write slides back to OOXML ZIP</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>Frontend: presentationeditor-react</h3>
+  <p>Already has full scaffolding. MVP adds:</p>
+  <ul>
+    <li><strong>Slide Manager</strong> — thumbnails panel (left), add/reorder/delete slides (15 days)</li>
+    <li><strong>Canvas Editor</strong> — WYSIWYG slide canvas with text boxes, drag/resize (20 days)</li>
+    <li><strong>Toolbar</strong> — text formatting (bold/italic/size), shape insert (5 days)</li>
+    <li><strong>PPTX Roundtrip</strong> — load PPTX, edit, save as PPTX (10 days)</li>
+  </ul>
+</div>
+
+<div class="cards" style="margin-top:24px">
+  <div class="card">
+    <div class="card-body">
+      <h3>Total MVP Estimate</h3>
+      <p>~50 days = 2.5 sprints (3-week). Resume points after each sub-sprint.</p>
+    </div>
+  </div>
+</div>

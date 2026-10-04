@@ -1,0 +1,72 @@
+<h2>Frontend — Editor Layout &amp; Components</h2>
+<p class="subtitle">MVP component structure for presentationeditor-react</p>
+
+<div class="section">
+  <h3>Component Tree</h3>
+  <div class="mockup" style="margin-top:12px">
+    <div class="mockup-body" style="text-align:left;font-family:monospace;font-size:13px;line-height:1.8;padding:24px">
+      App<br/>
+      ├── <strong>Toolbar</strong> — File | Home | Insert | Design<br/>
+      │&nbsp;&nbsp; ├── File: New, Open, Save As PPTX<br/>
+      │&nbsp;&nbsp; ├── Home: Text Format (B/I/U/S, font, size)<br/>
+      │&nbsp;&nbsp; └── Insert: Text Box, Picture<br/>
+      ├── <strong>Main Area</strong><br/>
+      │&nbsp;&nbsp; ├── Left: <strong>SlideThumbnails</strong> (list, drag reorder)<br/>
+      │&nbsp;&nbsp; ├── Center: <strong>SlideCanvas</strong> (WYSIWYG, drag/resize shapes)<br/>
+      │&nbsp;&nbsp; └── Right: <strong>PropertiesPanel</strong> (selected shape properties)<br/>
+      └── <strong>StatusBar</strong> — slide N of M, zoom level
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Data Flow</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="text-align:center;font-family:monospace;font-size:13px;padding:16px">
+      <strong>Load:</strong> PPTX → wo-ooxml parser → PptxPresentation → MobX PresentationStore → Canvas Renderer<br/>
+      <strong>Save:</strong> PresentationStore → PptxPresentation → wo-ooxml serializer → PPTX file download<br/>
+      <strong>Edit:</strong> User drags shape → Canvas events → PresentationStore.updateShape() → Re-render
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Files to Create/Modify (Frontend)</h3>
+  <ul>
+    <li><strong>New:</strong> <code>components/SlideThumbnails.tsx</code> — slide list panel</li>
+    <li><strong>New:</strong> <code>components/SlideCanvas.tsx</code> — main editing canvas</li>
+    <li><strong>New:</strong> <code>components/ShapeRenderer.tsx</code> — renders shapes on canvas</li>
+    <li><strong>New:</strong> <code>components/PropertiesPanel.tsx</code> — shape property editor</li>
+    <li><strong>New:</strong> <code>components/InsertMenu.tsx</code> — text box / image insert</li>
+    <li><strong>Modify:</strong> <code>stores/PresentationStore.ts</code> — add shape CRUD, undo support</li>
+    <li><strong>Modify:</strong> <code>App.tsx</code> — new component wiring</li>
+    <li><strong>Modify:</strong> <code>Toolbar.tsx</code> — formatting actions</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h3>Question: Canvas Rendering Strategy</h3>
+  <div class="options" style="margin-top:8px">
+    <div class="option" data-choice="html" onclick="toggleSelect(this)">
+      <div class="letter">A</div>
+      <div class="content">
+        <h3>HTML/CSS Canvas</h3>
+        <p>Absolutely positioned divs. CSS transforms for drag/resize. Easier to implement, looks native.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="svg" onclick="toggleSelect(this)">
+      <div class="letter">B</div>
+      <div class="content">
+        <h3>SVG Canvas</h3>
+        <p>SVG elements for shapes. Good for drawing. More work for text editing.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="canvas-wasm" onclick="toggleSelect(this)">
+      <div class="letter">C</div>
+      <div class="content">
+        <h3>WASM Canvas (wo-renderer-wasm)</h3>
+        <p>Uses existing wo-renderer-wasm. Most performant. Most complex integration.</p>
+      </div>
+    </div>
+  </div>
+</div>

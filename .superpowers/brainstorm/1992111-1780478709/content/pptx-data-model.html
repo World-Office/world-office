@@ -1,0 +1,75 @@
+<h2>PPTX Data Model — wo-ooxml Extension</h2>
+<p class="subtitle">New types added to the existing wo-ooxml crate for PPTX roundtrip</p>
+
+<div class="section">
+  <h3>New Model Types</h3>
+  <div class="mockup" style="margin-top:12px">
+    <div class="mockup-body" style="text-align:left;font-family:monospace;font-size:13px;line-height:1.6">
+      <strong>PptxPresentation</strong> {<br/>
+      &nbsp;&nbsp;slide_size: SlideSize,<br/>
+      &nbsp;&nbsp;slides: Vec&lt;Slide&gt;,<br/>
+      &nbsp;&nbsp;slide_layouts: Vec&lt;SlideLayout&gt;,<br/>
+      &nbsp;&nbsp;theme: Option&lt;Theme&gt;<br/>
+      }<br/><br/>
+      <strong>Slide</strong> {<br/>
+      &nbsp;&nbsp;id: u32,<br/>
+      &nbsp;&nbsp;name: String,<br/>
+      &nbsp;&nbsp;layout_id: String,<br/>
+      &nbsp;&nbsp;shapes: Vec&lt;SlideShape&gt;,<br/>
+      &nbsp;&nbsp;notes: Option&lt;String&gt;<br/>
+      }<br/><br/>
+      <strong>SlideShape</strong> {<br/>
+      &nbsp;&nbsp;id: String,<br/>
+      &nbsp;&nbsp;shape_type: ShapeType,<br/>
+      &nbsp;&nbsp;bounds: Bounds { x, y, cx, cy },<br/>
+      &nbsp;&nbsp;text_body: Option&lt;TextBody&gt;,<br/>
+      &nbsp;&nbsp;placeholder: Option&lt;PlaceholderInfo&gt;<br/>
+      }<br/><br/>
+      <strong>TextBody</strong> {<br/>
+      &nbsp;&nbsp;paragraphs: Vec&lt;DocxParagraph&gt;,<br/>
+      &nbsp;&nbsp; — reuses existing DOCX paragraph/run types!<br/>
+      }<br/><br/>
+      <strong>Bounds</strong> { x: i64, y: i64, cx: i64, cy: i64 }<br/>
+      <em>// EMU coordinates (1/914400 inch — standard OOXML)</em>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Reuses Existing Infrastructure</h3>
+  <div class="pros-cons" style="font-size:14px">
+    <div class="pros"><h4>Reuses</h4><ul>
+      <li>DocxParagraph / DocxRun (text formatting)</li>
+      <li>Zip archive handling</li>
+      <li>Content type detection</li>
+      <li>Relationship parsing</li>
+      <li>FormatRoundtrip trait</li>
+    </ul></div>
+    <div class="cons"><h4>New (PPTX-specific)</h4><ul>
+      <li>Slide shape types (subtitle, body, pic, table, etc.)</li>
+      <li>Slide layout/master references</li>
+      <li>Placeholder info</li>
+      <li>Theme colors/fonts (minimal)</li>
+    </ul></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Question: What shape types for MVP?</h3>
+  <div class="options" style="margin-top:8px">
+    <div class="option" data-choice="minimal" onclick="toggleSelect(this)">
+      <div class="letter">1</div>
+      <div class="content">
+        <h3>Minimal — Text only</h3>
+        <p>Shapes: body, title, subtitle, textBox. No images, tables, charts.</p>
+      </div>
+    </div>
+    <div class="option" data-choice="plus-pic" onclick="toggleSelect(this)">
+      <div class="letter">2</div>
+      <div class="content">
+        <h3>Text + Images</h3>
+        <p>Adds picture shapes. Users can insert images on slides.</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+Changes needed for TL-1:
+
+1. Add DEFAULT_COLUMN_GAP_PT constant
+2. Add current_cols and column_gap fields to LayoutEngine
+3. Initialize those fields in LayoutEngine::new
+4. Update layout() to detect multi-column sections and call layout_multicolumn
+5. Add layout_multicolumn() function
+6. Update LayoutEngine creation in header/footer to include new fields
+7. Fix all DocxParagraph struct literals to include section_properties: None
+8. Add multicolumn test module
+
+Let's do this step by step.
