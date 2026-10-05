@@ -1,9 +1,9 @@
 [submodule "artwork"]
 	path = artwork
-	url = https://codeberg.org/World-Office/artwork.git
+	url = https://github.com/World-Office/artwork.git
 [submodule "plan"]
 	path = plan
-	url = https://codeberg.org/World-Office/plan.git
+	url = https://github.com/World-Office/plan.git
 [submodule "server"]
 	path = server
 	url = https://github.com/World-Office/server.git
