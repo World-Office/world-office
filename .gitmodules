@@ -1,0 +1,15 @@
+[submodule "artwork"]
+	path = artwork
+	url = https://codeberg.org/World-Office/artwork.git
+[submodule "plan"]
+	path = plan
+	url = https://codeberg.org/World-Office/plan.git
+[submodule "server"]
+	path = server
+	url = https://codeberg.org/World-Office/server.git
+[submodule "server-py"]
+	path = server-py
+	url = https://github.com/World-Office/server-py.git
+[submodule "wo-test-harness"]
+	path = wo-test-harness
+	url = https://github.com/World-Office/wo-test-harness.git
