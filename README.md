@@ -10,6 +10,21 @@ open-source document editing suite built in Rust ([World-Office on Codeberg](htt
 ## Demo sandbox
 
 Test page at `world-office.graphwiz.ai/demo/` (directory-mounted → git pull propagates live).
+
+**Primary: our own Rust stack.** The World-Office Document Server (Rust, `wo-docserver` + the
+`documenteditor-react` UI) is already deployed on **legion** at `editor.cloud.graphwiz.ai`
+(integrated with ocis via WOPI — the production setup, deployed via
+`/home/weiss/compose-cutover/docker-compose.yml`, image `worldoffice/documentserver:latest`,
+rebuilt by `.github/workflows/build-docserver-image.yml` on the legion runner; editor UI
+staged at `/home/weiss/editor-ui-b2c1c282`). All five editors (`/word/ /sheet/ /slide/
+/pdf/ /diagram/`) auto-load the baked-in `demo.docx` via the docserver's own `/demo/info` +
+`/demo/document` endpoints (DocumentStore.ts defaults — no ocis, no auth), `UserCanWrite:
+true`. Typing is in-session only; a save would need a WOPI token/lock that the demo doc
+never gets, so nothing persists. CSP `frame-ancestors 'self' cloud.graphwiz.ai` → the demo
+page links out (`target=_blank`), no iframe.
+
+**Reference: upstream OnlyOffice** engine at `world-office-demo.graphwiz.ai` (kept for
+comparison, embedded in `/demo/`).
 Visitors pick a **predefined document** (`demo/files/*.docx`, generated minimal OOXML — regen via
 `python3 gen-demo-docx.py demo/files` pattern in git history) and type in it. **No upload, no login.**
 The embedded editor comes from `world-office-demo.graphwiz.ai` (upstream OnlyOffice Document
