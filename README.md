@@ -23,8 +23,11 @@ JWT disabled (nothing to protect), example app pre-seeded with sample docs.
 # on CI, from ~/git/wo-website
 sudo docker compose -f demo/docker-compose.yml up -d
 # reset the sandbox (wipes all demo documents)
-sudo docker compose -f demo/docker-compose.yml down && sudo docker compose -f demo/docker-compose.yml up -d
+sudo demo/purge.sh
 ```
+
+Automatic purge: hourly root cron on CI (`15 * * * *`) runs `demo/purge.sh` —
+recreates the container, wiping all demo content (~15 s outage at :15 each hour).
 
 ## Deploy
 
