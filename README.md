@@ -9,11 +9,19 @@ open-source document editing suite built in Rust ([World-Office on Codeberg](htt
 
 ## Demo sandbox
 
-`demo/docker-compose.yml` deploys a public, anonymous editor sandbox at
-`world-office-demo.graphwiz.ai` (covered by the `*.graphwiz.ai` wildcard → CI — no DNS record needed).
-Runs upstream **OnlyOffice Document Server** (the engine the World-Office fork is based on)
-until the fork publishes its own images (codeberg registry currently empty). Swap the image in
-this compose file once `codeberg.org/world-office/docserver` becomes pullable.
+Test page at `world-office.graphwiz.ai/demo/` (directory-mounted → git pull propagates live).
+Visitors pick a **predefined document** (`demo/files/*.docx`, generated minimal OOXML — regen via
+`python3 gen-demo-docx.py demo/files` pattern in git history) and type in it. **No upload, no login.**
+The embedded editor comes from `world-office-demo.graphwiz.ai` (upstream OnlyOffice Document
+Server — the engine the fork is based on; swap its image once codeberg publishes the fork's own).
+
+Wiring: `document.url` points at the public site URL (passes the DS private-IP SSRF filter,
+reachable via hairpin from the demo container — verified); save callbacks hit
+`/wo-demo/callback` in `nginx-default.conf`, a JSON no-op (`{"error":0}`) so nothing persists.
+Doc key = `<file>-<YYYY-MM-DD-HH>` → same-hour visitors co-edit live; the hourly purge
+(recreates the DS container) wipes redis+cache, so the next visitor starts pristine.
+The engine host is noindexed via `X-Robots-Tag` middleware; `EXAMPLE=true` was dropped
+(the example service never starts in this image — supervisor shows `ds:example STOPPED`).
 
 No-harm properties: container-local storage (docs vanish on `docker compose down`),
 mem 3G / no swap, 2 CPUs, OOM score 500, traefik rate limit 50 rps avg / 100 burst,
