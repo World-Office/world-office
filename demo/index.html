@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World-Office Testumgebung — Dokument öffnen</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.ico">
+<style>
+:root{
+  --void:#0b0b1e; --panel:#12122b; --panel2:#171738;
+  --indigo:#4f46e5; --cyan:#22d3ee; --gold:#f59e0b;
+  --text:#e5e7f0; --muted:#9ca3c4; --line:rgba(79,70,229,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--void);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--cyan);text-decoration:none}
+header{padding:22px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+header .brand{display:flex;align-items:center;gap:12px;font-weight:600}
+header img{height:30px}
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.75rem;border:1px solid var(--line);color:var(--cyan);margin-left:6px}
+.badge.gold{color:var(--gold)}
+main{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:36px 24px}
+h1{font-size:1.5rem;margin-bottom:6px}
+.sub{color:var(--muted);margin-bottom:28px;font-size:.95rem}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px}
+.file{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;cursor:pointer;transition:transform .15s,border-color .15s}
+.file:hover{transform:translateY(-3px);border-color:var(--cyan)}
+.file .ico{font-size:1.6rem;display:block;margin-bottom:10px}
+.file h2{font-size:1.02rem;margin-bottom:6px}
+.file p{color:var(--muted);font-size:.88rem}
+#editor-holder{display:none;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-bottom:14px}
+#editor-holder.full{height:78vh}
+#placeholder{border:1px dashed var(--line);border-radius:12px;padding:34px;text-align:center;color:var(--muted);font-size:.95rem}
+.back{display:inline-block;margin:6px 0 18px;color:var(--muted);font-size:.9rem}
+footer{padding:18px 24px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted);font-size:.82rem;text-align:center}
+footer a{color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="/assets/logo.svg" alt="World-Office">
+    <span>World-Office Testumgebung</span>
+  </div>
+  <div>
+    <span class="badge">anonym</span>
+    <span class="badge">stündlich zurückgesetzt</span>
+    <span class="badge gold">Upstream-Engine</span>
+  </div>
+</header>
+
+<main>
+  <div id="picker">
+    <h1>Dokument wählen</h1>
+    <p class="sub">Kein Upload, keine Anmeldung: Wählen Sie eines der vorbereiteten Dokumente und tippen Sie direkt los. Beitreten mehrere Personen, wird gemeinsam live editiert.</p>
+    <div class="pick">
+      <div class="file" onclick="openDoc('Bericht.docx','word')">
+        <span class="ico">📝</span><h2>Bericht.docx</h2>
+        <p>Einführungsdokument mit Kontext — lesen, bearbeiten, live miterleben.</p>
+      </div>
+      <div class="file" onclick="openDoc('Notizen.docx','word')">
+        <span class="ico">🗒️</span><h2>Notizen.docx</h2>
+        <p>Freies Notizblatt zum Testen von Formatierung, Listen und Tabellen.</p>
+      </div>
+    </div>
+    <div id="placeholder">Wählen Sie oben ein Dokument, um den Editor zu starten.</div>
+  </div>
+
+  <div id="editor-holder">
+    <a class="back" href="#" onclick="location.reload();return false">← zurück zur Auswahl</a>
+    <div id="editor"></div>
+  </div>
+</main>
+
+<footer>
+  Die Testumgebung läuft auf der Upstream-Engine — der World-Office-Fork ist in Entwicklung.
+  Inhalte werden stündlich gelöscht und verlassen dieses System nicht. ·
+  <a href="/">← Hauptseite</a>
+</footer>
+
+<script src="https://world-office-demo.graphwiz.ai/web-apps/apps/api/documents/api.js"></script>
+<script>
+// Doc key rotates hourly — in sync with the hourly container purge.
+// Same hour = shared live co-editing session; after the purge everyone
+// starts from the pristine predefined document again.
+function hourKey(name){
+  return name + '-' + new Date().toISOString().slice(0,13);
+}
+function openDoc(name, type){
+  var holder = document.getElementById('editor-holder');
+  document.getElementById('picker').style.display = 'none';
+  holder.style.display = 'block';
+  holder.classList.add('full');
+  new DocsAPI.DocEditor('editor', {
+    document: {
+      fileType: 'docx',
+      key: hourKey(name),
+      title: name,
+      url: 'https://world-office.graphwiz.ai/demo/files/' + name
+    },
+    documentType: type,
+    type: 'desktop',
+    editorConfig: {
+      callbackUrl: 'https://world-office.graphwiz.ai/wo-demo/callback',
+      lang: 'de',
+      customization: {
+        hideRightMenu: true,
+        hideRulers: true,
+        forcesave: false,
+        compactHeader: true
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>

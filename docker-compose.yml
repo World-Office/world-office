@@ -7,6 +7,8 @@ services:
       - ./assets:/usr/share/nginx/html/assets:ro
       - ./robots.txt:/usr/share/nginx/html/robots.txt:ro
       - ./sitemap.xml:/usr/share/nginx/html/sitemap.xml:ro
+      - ./demo:/usr/share/nginx/html/demo:ro
+      - ./nginx-default.conf:/etc/nginx/conf.d/default.conf:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.worldoffice-http.rule=Host(`world-office.graphwiz.ai`)"

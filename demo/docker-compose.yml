@@ -14,7 +14,6 @@ services:
     restart: unless-stopped
     environment:
       - JWT_ENABLED=false
-      - EXAMPLE=true
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wo-demo-http.rule=Host(`world-office-demo.graphwiz.ai`)"
@@ -23,9 +22,10 @@ services:
       - "traefik.http.routers.wo-demo.rule=Host(`world-office-demo.graphwiz.ai`)"
       - "traefik.http.routers.wo-demo.entrypoints=websecure"
       - "traefik.http.routers.wo-demo.tls.certresolver=mytlschallenge"
-      - "traefik.http.routers.wo-demo.middlewares=wo-demo-ratelimit@docker"
+      - "traefik.http.routers.wo-demo.middlewares=wo-demo-ratelimit@docker,wo-demo-noindex@docker"
       - "traefik.http.middlewares.wo-demo-ratelimit.ratelimit.average=50"
       - "traefik.http.middlewares.wo-demo-ratelimit.ratelimit.burst=100"
+      - "traefik.http.middlewares.wo-demo-noindex.headers.customresponseheaders.X-Robots-Tag=noindex, nofollow"
       - "traefik.http.services.wo-demo.loadbalancer.server.port=80"
     mem_limit: 3g
     memswap_limit: 3g
