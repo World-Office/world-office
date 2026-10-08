@@ -1,0 +1,38 @@
+# World-Office public demo sandbox — ephemeral, resource-capped, anonymous.
+# Engine: upstream OnlyOffice Document Server (the basis of the World-Office fork)
+# until the fork publishes its own container images (codeberg.org/world-office/* is empty).
+#
+# "No harm" properties:
+#   - container-local storage only: all documents vanish on `docker compose down`
+#   - mem capped 3G (no swap), 2 CPUs, high OOM score — demo is the preferred victim
+#   - JWT disabled: there are no credentials to protect; anonymous by design
+#   - traefik rate limit in front of the public router
+#   - example app enabled so visitors land on clickable sample docs
+services:
+  demo:
+    image: onlyoffice/documentserver:latest
+    restart: unless-stopped
+    environment:
+      - JWT_ENABLED=false
+      - EXAMPLE=true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wo-demo-http.rule=Host(`world-office-demo.graphwiz.ai`)"
+      - "traefik.http.routers.wo-demo-http.entrypoints=web"
+      - "traefik.http.routers.wo-demo-http.middlewares=https-redirect@file"
+      - "traefik.http.routers.wo-demo.rule=Host(`world-office-demo.graphwiz.ai`)"
+      - "traefik.http.routers.wo-demo.entrypoints=websecure"
+      - "traefik.http.routers.wo-demo.tls.certresolver=mytlschallenge"
+      - "traefik.http.routers.wo-demo.middlewares=wo-demo-ratelimit@docker"
+      - "traefik.http.middlewares.wo-demo-ratelimit.ratelimit.average=50"
+      - "traefik.http.middlewares.wo-demo-ratelimit.ratelimit.burst=100"
+      - "traefik.http.services.wo-demo.loadbalancer.server.port=80"
+    mem_limit: 3g
+    memswap_limit: 3g
+    cpus: 2
+    oom_score_adj: 500
+
+networks:
+  default:
+    external: true
+    name: traefik-web
