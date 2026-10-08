@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1920"
+   height="1080"
+   viewBox="0 0 1920 1080"
+   version="1.1"
+   id="svg204"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <!-- ============================================================
+       TEASER: "Prism in the Void"
+       A wider composition extending the Deconstructivist Prism logo
+       into an atmospheric architectural scene.
+       
+       Inspired by: Zaha Hadid, Daniel Libeskind, Tadao Ando
+       Concept: An abstract crystalline structure floating in a 
+       minimalist void, with architectural grid lines suggesting
+       an urban landscape receding into darkness.
+       ============================================================ -->
+  <defs
+     id="defs48">
+    <!-- Background gradient: dark void with subtle blue shift -->
+    <linearGradient
+       id="bgGrad"
+       x1="0%"
+       y1="100%"
+       x2="30%"
+       y2="0%">
+      <stop
+         offset="0%"
+         stop-color="#060610"
+         id="stop2" />
+      <stop
+         offset="40%"
+         stop-color="#0a0a1e"
+         id="stop4" />
+      <stop
+         offset="100%"
+         stop-color="#0e1030"
+         id="stop6" />
+    </linearGradient>
+    <!-- Atmospheric glow behind main structure -->
+    <radialGradient
+       id="atmosGlow"
+       cx="55%"
+       cy="48%"
+       r="30%">
+      <stop
+         offset="0%"
+         stop-color="#0d1a3a"
+         stop-opacity="0.8"
+         id="stop9" />
+      <stop
+         offset="60%"
+         stop-color="#0a0e22"
+         stop-opacity="0.3"
+         id="stop11" />
+      <stop
+         offset="100%"
+         stop-color="#0a0a1e"
+         stop-opacity="0"
+         id="stop13" />
+    </radialGradient>
+    <!-- Floor reflection gradient -->
+    <linearGradient
+       id="floorGrad"
+       x1="0%"
+       y1="0%"
+       x2="0%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#0a0a1e"
+         id="stop16" />
+      <stop
+         offset="100%"
+         stop-color="#040408"
+         id="stop18" />
+    </linearGradient>
+    <!-- Cyan gradient for main facet -->
+    <linearGradient
+       id="cyanGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#00d4ff"
+         id="stop21" />
+      <stop
+         offset="100%"
+         stop-color="#007799"
+         id="stop23" />
+    </linearGradient>
+    <!-- Gold gradient -->
+    <linearGradient
+       id="goldGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#e8b931"
+         id="stop26" />
+      <stop
+         offset="100%"
+         stop-color="#c49520"
+         id="stop28" />
+    </linearGradient>
+    <!-- Indigo gradient for main volume -->
+    <linearGradient
+       id="indigoGrad"
+       x1="0%"
+       y1="0%"
+       x2="80%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#252550"
+         id="stop31" />
+      <stop
+         offset="100%"
+         stop-color="#12122a"
+         id="stop33" />
+    </linearGradient>
+    <!-- Perspective grid fade -->
+    <linearGradient
+       id="gridFade"
+       x1="50%"
+       y1="0%"
+       x2="50%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#ffffff"
+         stop-opacity="0.08"
+         id="stop36" />
+      <stop
+         offset="70%"
+         stop-color="#ffffff"
+         stop-opacity="0.02"
+         id="stop38" />
+      <stop
+         offset="100%"
+         stop-color="#ffffff"
+         stop-opacity="0"
+         id="stop40" />
+    </linearGradient>
+    <!-- Horizon glow -->
+    <radialGradient
+       id="horizonGlow"
+       cx="50%"
+       cy="75%"
+       r="50%">
+      <stop
+         offset="0%"
+         stop-color="#00d4ff"
+         stop-opacity="0.04"
+         id="stop43" />
+      <stop
+         offset="100%"
+         stop-color="#00d4ff"
+         stop-opacity="0"
+         id="stop45" />
+    </radialGradient>
+  </defs>
+  <!-- === BACKGROUND === -->
+  <path
+     id="rect50"
+     style="fill:url(#bgGrad)"
+     d="M 0,0 H 1920 V 1080 H 0 Z" />
+  <path
+     id="rect52"
+     style="fill:url(#atmosGlow)"
+     d="M 0,0 H 1920 V 1080 H 0 Z" />
+  <path
+     id="rect54"
+     style="fill:url(#horizonGlow)"
+     d="M 0,0 H 1920 V 1080 H 0 Z" />
+  <!-- === PERSPECTIVE GRID (architectural floor) === -->
+  <!-- Vanishing point at roughly (960, 300) -->
+  <g
+     opacity="0.06"
+     stroke="#00d4ff"
+     stroke-width="0.5"
+     fill="none"
+     id="g102">
+    <!-- Horizontal perspective lines (converging to vanishing point) -->
+    <path
+       id="line56"
+       d="M 0,1080 960,300" />
+    <path
+       id="line58"
+       d="M 200,1080 960,300" />
+    <path
+       id="line60"
+       d="M 400,1080 960,300" />
+    <path
+       id="line62"
+       d="M 600,1080 960,300" />
+    <path
+       id="line64"
+       d="M 800,1080 960,300" />
+    <path
+       id="line66"
+       d="M 960,1080 V 300" />
+    <path
+       id="line68"
+       d="M 1120,1080 960,300" />
+    <path
+       id="line70"
+       d="M 1320,1080 960,300" />
+    <path
+       id="line72"
+       d="M 1520,1080 960,300" />
+    <path
+       id="line74"
+       d="M 1720,1080 960,300" />
+    <path
+       id="line76"
+       d="M 1920,1080 960,300" />
+    <!-- Cross lines (horizontal, getting closer together near horizon) -->
+    <path
+       id="line78"
+       d="M 0,900 H 1920" />
+    <path
+       id="line80"
+       d="M 0,780 H 1920" />
+    <path
+       id="line82"
+       d="M 0,680 H 1920" />
+    <path
+       id="line84"
+       d="M 0,600 H 1920" />
+    <path
+       id="line86"
+       d="M 0,540 H 1920" />
+    <path
+       id="line88"
+       d="M 0,495 H 1920" />
+    <path
+       id="line90"
+       d="M 0,460 H 1920" />
+    <path
+       id="line92"
+       d="M 0,433 H 1920" />
+    <path
+       id="line94"
+       d="M 0,412 H 1920" />
+    <path
+       id="line96"
+       d="M 0,395 H 1920" />
+    <path
+       id="line98"
+       d="M 0,382 H 1920" />
+    <path
+       id="line100"
+       d="M 0,371 H 1920" />
+  </g>
+  <!-- === DISTANT ARCHITECTURAL ELEMENTS (background, very subtle) === -->
+  <!-- Tall tower silhouettes in the far distance -->
+  <g
+     opacity="0.12"
+     id="g118">
+    <!-- Far left tower cluster -->
+    <path
+       id="rect104"
+       style="fill:#0d0d20"
+       d="m 180,280 h 25 v 400 h -25 z" />
+    <path
+       id="rect106"
+       style="fill:#0c0c1e"
+       d="m 215,310 h 18 v 370 h -18 z" />
+    <path
+       id="rect108"
+       style="fill:#0b0b1c"
+       d="m 150,340 h 20 v 340 h -20 z" />
+    <!-- Far right tower cluster -->
+    <path
+       id="rect110"
+       style="fill:#0d0d20"
+       d="m 1580,300 h 22 v 380 h -22 z" />
+    <path
+       id="rect112"
+       style="fill:#0c0c1e"
+       d="m 1610,260 h 30 v 420 h -30 z" />
+    <path
+       id="rect114"
+       style="fill:#0b0b1c"
+       d="m 1650,330 h 16 v 350 h -16 z" />
+    <path
+       id="rect116"
+       style="fill:#0a0a1a"
+       d="m 1540,350 h 15 v 330 h -15 z" />
+  </g>
+  <!-- === FLOATING GEOMETRIC SHARDS (midground atmosphere) === -->
+  <!-- These create depth and architectural dynamism -->
+  <!-- Large floating plane - left side, tilted -->
+  <path
+     id="polygon120"
+     style="opacity:0.4;fill:#1a1a3e"
+     d="m 120,420 160,-70 40,90 -160,70 z" />
+  <!-- Medium shard - right side -->
+  <path
+     id="polygon122"
+     style="opacity:0.25;fill:#004466"
+     d="m 1500,380 120,-40 20,90 -120,40 z" />
+  <!-- Small triangular accent - upper left -->
+  <path
+     id="polygon124"
+     style="opacity:0.08;fill:#00d4ff"
+     d="m 300,200 60,-30 -20,70 z" />
+  <!-- Wireframe cube - left midground (just edges) -->
+  <g
+     opacity="0.06"
+     stroke="#00d4ff"
+     stroke-width="0.8"
+     fill="none"
+     id="g136">
+    <path
+       id="polygon126"
+       d="m 80,480 60,-30 v 60 l -60,30 z" />
+    <path
+       id="polygon128"
+       d="m 140,450 60,30 v 60 l -60,-30 z" />
+    <path
+       id="line130"
+       d="m 80,480 60,30" />
+    <path
+       id="line132"
+       d="m 140,450 60,30" />
+    <path
+       id="line134"
+       style="opacity:0"
+       d="m 80,540 60,30" />
+  </g>
+  <!-- === MAIN STRUCTURE: DECONSTRUCTIVIST PRISM (scaled up) === -->
+  <!-- Centered at roughly (1050, 480) - slightly right of center for dynamic balance -->
+  <!-- Layer 1 (deepest): Back-right face - deep indigo volume -->
+  <path
+     id="polygon138"
+     style="fill:url(#indigoGrad)"
+     d="M 1050,110 1300,350 1210,790 910,640 Z" />
+  <!-- Layer 2: Left face - dark teal, creates corner depth -->
+  <path
+     id="polygon140"
+     style="fill:#004466"
+     d="M 730,310 1050,110 910,640 640,590 Z" />
+  <!-- Layer 3: Top face - deep purple, closes the top volume -->
+  <path
+     id="polygon142"
+     style="fill:#2d1b69"
+     d="m 730,310 320,-200 250,240 -380,80 z" />
+  <!-- Layer 4: Front-right facet - electric cyan, catches light -->
+  <path
+     id="polygon144"
+     style="opacity:0.92;fill:url(#cyanGrad)"
+     d="m 1300,350 100,180 -120,360 -70,-100 z" />
+  <!-- Layer 5: Lower-left cantilever - warm gold accent -->
+  <path
+     id="polygon146"
+     style="opacity:0.88;fill:url(#goldGrad)"
+     d="M 640,590 910,640 810,830 530,795 Z" />
+  <!-- Layer 6: Floating shard - upper right of main structure -->
+  <path
+     id="polygon148"
+     style="opacity:0.2;fill:#00d4ff"
+     d="m 1200,80 160,120 -60,150 -150,-90 z" />
+  <!-- Layer 7: Small floating element near gold accent -->
+  <path
+     id="polygon150"
+     style="opacity:0.15;fill:#e8b931"
+     d="m 1350,200 80,70 -30,100 -70,-60 z" />
+  <!-- === EDGE HIGHLIGHTS on main structure === -->
+  <g
+     stroke-linecap="round"
+     id="g166">
+    <path
+       id="line152"
+       style="opacity:0.2;stroke:#ffffff;stroke-width:1.8"
+       d="m 1050,110 250,240" />
+    <path
+       id="line154"
+       style="opacity:0.18;stroke:#ffffff;stroke-width:1.5"
+       d="m 1300,350 100,180" />
+    <path
+       id="line156"
+       style="opacity:0.12;stroke:#ffffff;stroke-width:1.2"
+       d="M 1050,110 730,310" />
+    <path
+       id="line158"
+       style="opacity:0.15;stroke:#00d4ff"
+       d="M 1300,350 920,430" />
+    <path
+       id="line160"
+       style="opacity:0.1;stroke:#ffffff;stroke-width:0.8"
+       d="M 730,310 1050,110" />
+    <!-- Gold edge highlight -->
+    <path
+       id="line162"
+       style="opacity:0.15;stroke:#e8b931;stroke-width:1.2"
+       d="m 640,590 270,50" />
+    <path
+       id="line164"
+       style="opacity:0.12;stroke:#e8b931"
+       d="M 910,640 810,830" />
+  </g>
+  <!-- === REFLECTION (below main structure, very subtle) === -->
+  <g
+     opacity="0.06"
+     transform="translate(0,1080) scale(1,-1) translate(0,-1080)"
+     id="g174">
+    <path
+       id="polygon168"
+       style="fill:#2d1b69"
+       d="m 730,310 320,-200 250,240 -380,80 z" />
+    <path
+       id="polygon170"
+       style="fill:#00d4ff"
+       d="m 1300,350 100,180 -120,360 -70,-100 z" />
+    <path
+       id="polygon172"
+       style="fill:#e8b931"
+       d="M 640,590 910,640 810,830 530,795 Z" />
+  </g>
+  <!-- === ADDITIONAL FLOATING ELEMENTS (foreground atmosphere) === -->
+  <!-- These create a sense of architectural debris / deconstruction -->
+  <!-- Small floating triangle - bottom right -->
+  <path
+     id="polygon176"
+     style="opacity:0.1;fill:#00d4ff"
+     d="m 1650,750 70,-40 -20,80 z" />
+  <!-- Thin parallelogram - bottom left -->
+  <path
+     id="polygon178"
+     style="opacity:0.15;fill:#2d1b69"
+     d="m 100,850 100,-30 20,50 -100,30 z" />
+  <!-- Dot cluster (suggests distant lights / city) -->
+  <g
+     fill="#00d4ff"
+     opacity="0.06"
+     id="g196">
+    <path
+       id="circle180"
+       d="m 351.5,400 a 1.5,1.5 0 0 1 -1.5,1.5 1.5,1.5 0 0 1 -1.5,-1.5 1.5,1.5 0 0 1 1.5,-1.5 1.5,1.5 0 0 1 1.5,1.5 z" />
+    <path
+       id="circle182"
+       d="m 371,390 a 1,1 0 0 1 -1,1 1,1 0 0 1 -1,-1 1,1 0 0 1 1,-1 1,1 0 0 1 1,1 z" />
+    <path
+       id="circle184"
+       d="m 391.2,410 a 1.2,1.2 0 0 1 -1.2,1.2 1.2,1.2 0 0 1 -1.2,-1.2 1.2,1.2 0 0 1 1.2,-1.2 1.2,1.2 0 0 1 1.2,1.2 z" />
+    <path
+       id="circle186"
+       d="m 420.8,395 a 0.80000001,0.80000001 0 0 1 -0.8,0.8 0.80000001,0.80000001 0 0 1 -0.8,-0.8 0.80000001,0.80000001 0 0 1 0.8,-0.8 0.80000001,0.80000001 0 0 1 0.8,0.8 z" />
+    <path
+       id="circle188"
+       d="m 1551.5,450 a 1.5,1.5 0 0 1 -1.5,1.5 1.5,1.5 0 0 1 -1.5,-1.5 1.5,1.5 0 0 1 1.5,-1.5 1.5,1.5 0 0 1 1.5,1.5 z" />
+    <path
+       id="circle190"
+       d="m 1571,440 a 1,1 0 0 1 -1,1 1,1 0 0 1 -1,-1 1,1 0 0 1 1,-1 1,1 0 0 1 1,1 z" />
+    <path
+       id="circle192"
+       d="m 1591.2,460 a 1.2,1.2 0 0 1 -1.2,1.2 1.2,1.2 0 0 1 -1.2,-1.2 1.2,1.2 0 0 1 1.2,-1.2 1.2,1.2 0 0 1 1.2,1.2 z" />
+    <path
+       id="circle194"
+       d="m 1610.8,445 a 0.80000001,0.80000001 0 0 1 -0.8,0.8 0.80000001,0.80000001 0 0 1 -0.8,-0.8 0.80000001,0.80000001 0 0 1 0.8,-0.8 0.80000001,0.80000001 0 0 1 0.8,0.8 z" />
+  </g>
+  <!-- === FLOOR PLANE (subtle ground plane) === -->
+  <path
+     id="rect198"
+     style="opacity:0.5;fill:url(#floorGrad)"
+     d="m 0,850 h 1920 v 230 H 0 Z" />
+  <!-- === TITLE TEXT === -->
+  <g
+     aria-label="ARTWORK"
+     id="text200"
+     style="font-weight:300;font-size:28px;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;letter-spacing:24;text-anchor:middle;opacity:0.35;fill:#ffffff">
+    <path
+       d="m 830.152,993.868 2.1,6.132 h 2.912 l -7.168,-20.412 h -3.36 l -7.28,20.412 h 2.772 l 2.156,-6.132 z m -0.728,-2.184 h -6.496 l 3.36,-9.296 z"
+       id="path277" />
+    <path
+       d="m 864.764,991.208 h 6.72 c 2.324,0 3.36,1.12 3.36,3.64 l -0.028,1.82 c 0,1.26 0.224,2.492 0.588,3.332 h 3.164 v -0.644 c -0.98,-0.672 -1.176,-1.4 -1.232,-4.116 -0.028,-3.36 -0.56,-4.368 -2.772,-5.32 2.296,-1.148 3.22,-2.52 3.22,-4.872 0,-3.528 -2.184,-5.46 -6.216,-5.46 H 862.16 V 1000 h 2.604 z m 0,-2.296 v -7.028 h 6.3 c 1.456,0 2.296,0.224 2.94,0.784 0.7,0.588 1.064,1.512 1.064,2.716 0,2.436 -1.232,3.528 -4.004,3.528 z"
+       id="path279" />
+    <path
+       d="m 913.03998,981.884 h 6.692 v -2.296 h -16.016 v 2.296 h 6.72 V 1000 h 2.604 z"
+       id="path281" />
+    <path
+       d="m 965.516,1000 5.18,-20.412 h -2.912 l -3.752,16.576 -4.648,-16.576 h -2.8 l -4.536,16.576 -3.836,-16.576 H 945.3 l 5.236,20.412 h 2.856 l 4.564,-16.772 4.704,16.772 z"
+       id="path283" />
+    <path
+       d="m 1005.504,979.252 c -5.85197,0 -9.82797,4.312 -9.82797,10.696 0,6.412 3.948,10.696 9.85597,10.696 2.492,0 4.676,-0.756 6.328,-2.156 2.212,-1.876 3.528,-5.04 3.528,-8.372 0,-6.58 -3.892,-10.864 -9.884,-10.864 z m 0,2.296 c 4.424,0 7.28,3.332 7.28,8.512 0,4.928 -2.94,8.288 -7.252,8.288 -4.368,0 -7.25197,-3.36 -7.25197,-8.4 0,-5.04 2.88397,-8.4 7.22397,-8.4 z"
+       id="path285" />
+    <path
+       d="m 1045.604,991.208 h 6.72 c 2.324,0 3.36,1.12 3.36,3.64 l -0.028,1.82 c 0,1.26 0.224,2.492 0.588,3.332 h 3.164 v -0.644 c -0.98,-0.672 -1.176,-1.4 -1.232,-4.116 -0.028,-3.36 -0.56,-4.368 -2.772,-5.32 2.296,-1.148 3.22,-2.52 3.22,-4.872 0,-3.528 -2.184,-5.46 -6.216,-5.46 H 1043 V 1000 h 2.604 z m 0,-2.296 v -7.028 h 6.3 c 1.456,0 2.296,0.224 2.94,0.784 0.7,0.588 1.064,1.512 1.064,2.716 0,2.436 -1.232,3.528 -4.004,3.528 z"
+       id="path287" />
+    <path
+       d="m 1089.26,992.86 3.332,-3.332 7.196,10.472 h 3.08 l -8.4,-12.096 8.316,-8.316 h -3.36 l -10.164,10.332 v -10.332 h -2.604 V 1000 h 2.604 z"
+       id="path289" />
+  </g>
+  <!-- Subtitle -->
+  <g
+     aria-label="DECONSTRUCTIVIST PRISM"
+     id="text202"
+     style="font-weight:300;font-size:11px;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;letter-spacing:8;text-anchor:middle;opacity:0.2;fill:#00d4ff">
+    <path
+       d="m 803.72999,1035 h 3.091 c 2.024,0 3.267,-1.518 3.267,-4.015 0,-2.486 -1.232,-4.004 -3.267,-4.004 h -3.091 z m 1.023,-0.902 v -6.215 h 1.892 c 1.584,0 2.42,1.067 2.42,3.113 0,2.035 -0.836,3.102 -2.42,3.102 z"
+       id="path292" />
+    <path
+       d="m 820.574,1031.348 h 4.367 v -0.902 h -4.367 v -2.563 h 4.532 v -0.902 h -5.555 V 1035 h 5.753 v -0.902 h -4.73 z"
+       id="path294" />
+    <path
+       d="m 840.83899,1029.467 c -0.319,-1.76 -1.331,-2.618 -3.091,-2.618 -1.078,0 -1.947,0.341 -2.541,1.001 -0.726,0.792 -1.122,1.936 -1.122,3.234 0,1.32 0.407,2.453 1.155,3.234 0.627,0.638 1.419,0.935 2.464,0.935 1.958,0 3.058,-1.056 3.3,-3.179 h -1.056 c -0.088,0.55 -0.198,0.924 -0.363,1.243 -0.33,0.66 -1.012,1.034 -1.87,1.034 -1.595,0 -2.607,-1.276 -2.607,-3.278 0,-2.057 0.957,-3.322 2.519,-3.322 0.649,0 1.254,0.187 1.584,0.506 0.297,0.275 0.462,0.605 0.583,1.21 z"
+       id="path296" />
+    <path
+       d="m 853.69,1026.849 c -2.299,0 -3.861,1.694 -3.861,4.202 0,2.519 1.551,4.202 3.872,4.202 0.979,0 1.837,-0.297 2.486,-0.847 0.869,-0.737 1.386,-1.98 1.386,-3.289 0,-2.585 -1.529,-4.268 -3.883,-4.268 z m 0,0.902 c 1.738,0 2.86,1.309 2.86,3.344 0,1.936 -1.155,3.256 -2.849,3.256 -1.716,0 -2.849,-1.32 -2.849,-3.3 0,-1.98 1.133,-3.3 2.838,-3.3 z"
+       id="path298" />
+    <path
+       d="m 873.075,1026.981 h -0.968 v 6.556 l -4.191,-6.556 h -1.111 V 1035 h 0.968 v -6.501 l 4.147,6.501 h 1.155 z"
+       id="path300" />
+    <path
+       d="m 888.467,1029.335 c 0,-0.55 -0.033,-0.704 -0.209,-1.078 -0.44,-0.924 -1.375,-1.408 -2.728,-1.408 -1.76,0 -2.849,0.902 -2.849,2.354 0,0.979 0.517,1.595 1.573,1.87 l 1.991,0.528 c 1.023,0.264 1.474,0.671 1.474,1.298 0,0.429 -0.231,0.869 -0.572,1.111 -0.319,0.231 -0.825,0.341 -1.474,0.341 -0.88,0 -1.463,-0.209 -1.848,-0.671 -0.297,-0.352 -0.429,-0.737 -0.418,-1.232 h -0.968 c 0.011,0.737 0.154,1.221 0.473,1.661 0.55,0.759 1.474,1.144 2.695,1.144 0.957,0 1.738,-0.22 2.255,-0.616 0.539,-0.429 0.88,-1.144 0.88,-1.837 0,-0.99 -0.616,-1.716 -1.705,-2.013 l -2.013,-0.539 c -0.968,-0.264 -1.32,-0.572 -1.32,-1.188 0,-0.814 0.715,-1.353 1.793,-1.353 1.276,0 1.991,0.572 2.002,1.628 z"
+       id="path302" />
+    <path
+       d="m 900.82301,1027.883 h 2.629 v -0.902 h -6.292 v 0.902 h 2.64 V 1035 h 1.023 z"
+       id="path304" />
+    <path
+       d="m 913.48702,1031.546 h 2.64 c 0.913,0 1.32,0.44 1.32,1.43 l -0.011,0.715 c 0,0.495 0.088,0.979 0.231,1.309 h 1.243 v -0.253 c -0.385,-0.264 -0.462,-0.55 -0.484,-1.617 -0.011,-1.32 -0.22,-1.716 -1.089,-2.09 0.902,-0.451 1.265,-0.99 1.265,-1.914 0,-1.386 -0.858,-2.145 -2.442,-2.145 h -3.696 V 1035 h 1.023 z m 0,-0.902 v -2.761 h 2.475 c 0.572,0 0.902,0.088 1.155,0.308 0.275,0.231 0.418,0.594 0.418,1.067 0,0.957 -0.484,1.386 -1.573,1.386 z"
+       id="path306" />
+    <path
+       d="m 933.27901,1026.981 v 5.632 c 0,1.078 -0.781,1.738 -2.068,1.738 -0.594,0 -1.078,-0.143 -1.463,-0.418 -0.396,-0.308 -0.583,-0.715 -0.583,-1.32 v -5.632 h -1.023 v 5.632 c 0,1.628 1.166,2.64 3.069,2.64 1.881,0 3.091,-1.034 3.091,-2.64 v -5.632 z"
+       id="path308" />
+    <path
+       d="m 950.43101,1029.467 c -0.319,-1.76 -1.331,-2.618 -3.091,-2.618 -1.078,0 -1.947,0.341 -2.541,1.001 -0.726,0.792 -1.122,1.936 -1.122,3.234 0,1.32 0.407,2.453 1.155,3.234 0.627,0.638 1.419,0.935 2.464,0.935 1.958,0 3.058,-1.056 3.3,-3.179 h -1.056 c -0.088,0.55 -0.198,0.924 -0.363,1.243 -0.33,0.66 -1.012,1.034 -1.87,1.034 -1.595,0 -2.607,-1.276 -2.607,-3.278 0,-2.057 0.957,-3.322 2.519,-3.322 0.649,0 1.254,0.187 1.584,0.506 0.297,0.275 0.462,0.605 0.583,1.21 z"
+       id="path310" />
+    <path
+       d="m 962.64401,1027.883 h 2.629 v -0.902 h -6.292 v 0.902 h 2.64 V 1035 h 1.023 z"
+       id="path312" />
+    <path
+       d="m 975.36301,1026.981 h -1.034 V 1035 h 1.034 z"
+       id="path314" />
+    <path
+       d="m 988.36802,1035 2.783,-8.019 h -1.089 l -2.222,6.787 -2.354,-6.787 h -1.1 l 2.882,8.019 z"
+       id="path316" />
+    <path
+       d="m 1001.263,1026.981 h -1.034 V 1035 h 1.034 z"
+       id="path318" />
+    <path
+       d="m 1016.743,1029.335 c 0,-0.55 -0.033,-0.704 -0.209,-1.078 -0.44,-0.924 -1.375,-1.408 -2.728,-1.408 -1.76,0 -2.849,0.902 -2.849,2.354 0,0.979 0.517,1.595 1.573,1.87 l 1.991,0.528 c 1.023,0.264 1.474,0.671 1.474,1.298 0,0.429 -0.231,0.869 -0.572,1.111 -0.319,0.231 -0.825,0.341 -1.474,0.341 -0.88,0 -1.463,-0.209 -1.848,-0.671 -0.297,-0.352 -0.429,-0.737 -0.418,-1.232 h -0.968 c 0.011,0.737 0.154,1.221 0.473,1.661 0.55,0.759 1.474,1.144 2.695,1.144 0.957,0 1.738,-0.22 2.255,-0.616 0.539,-0.429 0.88,-1.144 0.88,-1.837 0,-0.99 -0.616,-1.716 -1.705,-2.013 l -2.013,-0.539 c -0.968,-0.264 -1.32,-0.572 -1.32,-1.188 0,-0.814 0.715,-1.353 1.793,-1.353 1.276,0 1.991,0.572 2.002,1.628 z"
+       id="path320" />
+    <path
+       d="m 1029.099,1027.883 h 2.629 v -0.902 h -6.292 v 0.902 h 2.64 V 1035 h 1.023 z"
+       id="path322" />
+    <path
+       d="m 1053.008,1031.601 h 2.519 c 0.627,0 1.122,-0.187 1.551,-0.572 0.484,-0.44 0.693,-0.957 0.693,-1.694 0,-1.507 -0.891,-2.354 -2.475,-2.354 h -3.311 V 1035 h 1.023 z m 0,-0.902 v -2.816 h 2.134 c 0.979,0 1.562,0.528 1.562,1.408 0,0.88 -0.583,1.408 -1.562,1.408 z"
+       id="path324" />
+    <path
+       d="m 1067.982,1031.546 h 2.64 c 0.913,0 1.32,0.44 1.32,1.43 l -0.011,0.715 c 0,0.495 0.088,0.979 0.231,1.309 h 1.243 v -0.253 c -0.385,-0.264 -0.462,-0.55 -0.484,-1.617 -0.011,-1.32 -0.22,-1.716 -1.089,-2.09 0.902,-0.451 1.265,-0.99 1.265,-1.914 0,-1.386 -0.858,-2.145 -2.442,-2.145 h -3.696 V 1035 h 1.023 z m 0,-0.902 v -2.761 h 2.475 c 0.572,0 0.902,0.088 1.155,0.308 0.275,0.231 0.418,0.594 0.418,1.067 0,0.957 -0.484,1.386 -1.573,1.386 z"
+       id="path326" />
+    <path
+       d="m 1083.825,1026.981 h -1.034 V 1035 h 1.034 z"
+       id="path328" />
+    <path
+       d="m 1099.305,1029.335 c 0,-0.55 -0.033,-0.704 -0.209,-1.078 -0.44,-0.924 -1.375,-1.408 -2.728,-1.408 -1.76,0 -2.849,0.902 -2.849,2.354 0,0.979 0.517,1.595 1.573,1.87 l 1.991,0.528 c 1.023,0.264 1.474,0.671 1.474,1.298 0,0.429 -0.231,0.869 -0.572,1.111 -0.319,0.231 -0.825,0.341 -1.474,0.341 -0.88,0 -1.463,-0.209 -1.848,-0.671 -0.297,-0.352 -0.429,-0.737 -0.418,-1.232 h -0.968 c 0.011,0.737 0.154,1.221 0.473,1.661 0.55,0.759 1.474,1.144 2.695,1.144 0.957,0 1.738,-0.22 2.255,-0.616 0.539,-0.429 0.88,-1.144 0.88,-1.837 0,-0.99 -0.616,-1.716 -1.705,-2.013 l -2.013,-0.539 c -0.968,-0.264 -1.32,-0.572 -1.32,-1.188 0,-0.814 0.715,-1.353 1.793,-1.353 1.276,0 1.991,0.572 2.002,1.628 z"
+       id="path330" />
+    <path
+       d="m 1113.234,1035 2.255,-6.721 V 1035 h 0.968 v -8.019 h -1.419 l -2.332,6.985 -2.376,-6.985 h -1.419 V 1035 h 0.968 v -6.721 l 2.277,6.721 z"
+       id="path332" />
+  </g>
+</svg>

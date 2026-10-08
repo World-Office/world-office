@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World-Office — Open-Source Dokumenten-Suite für die Cloud</title>
+<meta name="description" content="World-Office: unabhängige, Open-Source Dokumentenbearbeitung in Rust. WOPI-first, cloud-native, Echtzeit-Kollaboration. DOCX, ODT, PDF, EPUB und 20+ weitere Formate.">
+<meta property="og:title" content="World-Office — Dokumenten-Suite für die Cloud">
+<meta property="og:description" content="Unabhängig, Open Source, in Rust gebaut. WOPI-first. Echtzeit-Kollaboration via CRDTs. 20+ Formate.">
+<meta property="og:image" content="/assets/teaser.svg">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="preconnect" href="https://codeberg.org">
+<style>
+:root{
+  --void:#0b0b1e; --panel:#12122b; --panel2:#171738;
+  --indigo:#4f46e5; --cyan:#22d3ee; --gold:#f59e0b;
+  --text:#e5e7f0; --muted:#9ca3c4; --line:rgba(79,70,229,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--void);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:rgba(11,11,30,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav img{height:34px;vertical-align:middle}
+nav ul{display:flex;gap:22px;list-style:none}
+nav ul a{color:var(--muted);font-size:.92rem}
+nav ul a:hover{color:var(--cyan);text-decoration:none}
+.hero{padding:88px 0 64px;text-align:center;background:radial-gradient(ellipse 70% 55% at 50% -10%,rgba(79,70,229,.35),transparent),var(--void)}
+.hero img.banner{max-width:860px;width:100%;border-radius:14px;margin-bottom:40px;box-shadow:0 20px 60px rgba(34,211,238,.12)}
+.hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.15;margin-bottom:16px}
+.hero h1 .accent{background:linear-gradient(90deg,var(--cyan),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{max-width:680px;margin:0 auto 32px;color:var(--muted);font-size:1.12rem}
+.cta{display:inline-block;padding:13px 28px;border-radius:10px;font-weight:600;margin:0 8px 10px}
+.cta.primary{background:linear-gradient(90deg,var(--indigo),#6d28d9);color:#fff}
+.cta.primary:hover{filter:brightness(1.15);text-decoration:none}
+.cta.ghost{border:1px solid var(--line);color:var(--text)}
+.cta.ghost:hover{border-color:var(--cyan);text-decoration:none}
+.section{padding:72px 0;border-top:1px solid rgba(255,255,255,.05)}
+.section h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:10px}
+.section .lead{color:var(--muted);max-width:720px;margin-bottom:36px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:var(--cyan)}
+.card h3{margin-bottom:8px;font-size:1.05rem}
+.card p{color:var(--muted);font-size:.94rem}
+.card .ico{font-size:1.5rem;display:block;margin-bottom:12px}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:820px){.split{grid-template-columns:1fr}nav ul{display:none}}
+.split img{width:100%;border-radius:12px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+th{color:var(--cyan);font-weight:600}
+td:first-child{color:var(--gold);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;white-space:nowrap}
+td:last-child{color:var(--muted)}
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.75rem;border:1px solid var(--line);color:var(--cyan);margin:0 4px 6px 0}
+.license{background:linear-gradient(135deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;padding:36px;text-align:center}
+footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.05);color:var(--muted);font-size:.88rem;text-align:center}
+footer a{color:var(--muted);margin:0 8px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top"><img src="/assets/logo.svg" alt="World-Office Logo"></a>
+    <ul>
+      <li><a href="#vorteile">Vorteile</a></li>
+      <li><a href="#editoren">Editoren</a></li>
+      <li><a href="#wopi">Integration</a></li>
+      <li><a href="#architektur">Architektur</a></li>
+      <li><a href="#open-source">Open Source</a></li>
+      <li><a href="https://codeberg.org/World-Office">Codeberg ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <img class="banner" src="/assets/banner.svg" alt="World-Office — dekonstruktivistische Kristallformen">
+    <h1>Dokumente bearbeiten — <span class="accent">unabhängig, offen, in Rust gebaut.</span></h1>
+    <p class="sub">World-Office ist eine freie Dokumenten-Suite für die Cloud: Word, Sheets, Slides, PDF und Visio im Browser — mit Echtzeit-Kollaboration, 20+ Formaten und nativer WOPI-Anbindung an OpenCloud, Nextcloud und SharePoint.</p>
+    <a class="cta primary" href="https://codeberg.org/World-Office/server">Auf Codeberg ansehen</a>
+    <a class="cta ghost" href="#architektur">Architektur entdecken</a>
+  </div>
+</header>
+
+<section class="section" id="vorteile">
+  <div class="wrap">
+    <h2>Warum World-Office?</h2>
+    <p class="lead">Kommerzielle Officesuiten binden Sie an Lizenzen und Cloud-Anbieter. World-Office gibt Ihnen die Kontrolle zurück — ohne Kompromisse bei Leistung und Funktionsumfang.</p>
+    <div class="grid">
+      <div class="card"><span class="ico">⚡</span><h3>Rust-Kern</h3><p>26 Format-Parser, Canvas-Rendering und Konvertierungs-Pipeline in Rust: type-safe, schnell, ohne GC-Pausen.</p></div>
+      <div class="card"><span class="ico">🔗</span><h3>WOPI-first</h3><p>Native WOPI-Unterstützung für OpenCloud, Nextcloud und SharePoint — Client und Server Seite implementiert.</p></div>
+      <div class="card"><span class="ico">☁️</span><h3>Cloud-native</h3><p>Docker- und Kubernetes-ready, stateless Services wo es möglich ist. Horizontal skalierbar von klein bis Enterprise.</p></div>
+      <div class="card"><span class="ico">🤝</span><h3>Echtzeit-Kollaboration</h3><p>Gemeinsam editieren in Echtzeit — CRDT-basierter Co-Authoring-Service, offline-tolerant und merger-frei.</p></div>
+      <div class="card"><span class="ico">📁</span><h3>Format-agnostisch</h3><p>DOCX, ODT, PDF, EPUB, HTML, RTF und 15+ weitere Formate — öffnen, bearbeiten, konvertieren.</p></div>
+      <div class="card"><span class="ico">🏢</span><h3>Enterprise-ready</h3><p>Signaturen, DRM, Schwärzung, Wasserzeichen und Dokumentenvergleich als optionale Enterprise-Crates.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="editoren">
+  <div class="wrap">
+    <h2>Fünf Editoren. Eine Suite.</h2>
+    <p class="lead">Reaktive React-Editoren direkt im Browser — kein Plugin, kein Download.</p>
+    <div class="grid">
+      <div class="card"><span class="ico">📝</span><h3>Word</h3><p>Textdokumente mit Formatierung, Stilen, Kommentaren und Änderungsverfolgung.</p></div>
+      <div class="card"><span class="ico">📊</span><h3>Sheets</h3><p>Tabellen mit Formeln, Diagrammen und großen Datenmengen.</p></div>
+      <div class="card"><span class="ico">📽️</span><h3>Slides</h3><p>Präsentationen mit Masterlayouts, Animationen und Sprechernotizen.</p></div>
+      <div class="card"><span class="ico">📕</span><h3>PDF</h3><p>Anzeigen, Kommentieren und Ausfüllen — direkt im Browser.</p></div>
+      <div class="card"><span class="ico">🔀</span><h3>Visio</h3><p>Diagramme und Flusspläne mit Formbibliotheken.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="wopi">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2>WOPI-first: passt in Ihre bestehende Cloud</h2>
+        <p class="lead" style="margin-bottom:20px">World-Office implementiert beide Seiten des WOPI-Protokolls: Als <strong>Client</strong> dockt es an Ihre File-Cloud an, als <strong>Server</strong> hostet es die Editing-Experience hinter jedem WOPI-konformen Storage.</p>
+        <div>
+          <span class="badge">OpenCloud (OCIS)</span><span class="badge">Nextcloud</span><span class="badge">SharePoint</span><span class="badge">S3 / MinIO</span><span class="badge">CheckFileInfo</span><span class="badge">PutFile</span><span class="badge">Lock / Unlock</span>
+        </div>
+      </div>
+      <img src="/assets/teaser.svg" alt="World-Office Cloud-Architektur Teaser">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="architektur">
+  <div class="wrap">
+    <h2>Mikroservices, die zusammenarbeiten</h2>
+    <p class="lead">Jeder Service containerisiert und einzeln deploybar — oder als unified Stack.</p>
+    <table>
+      <tr><th>Service</th><th>Aufgabe</th></tr>
+      <tr><td>api-gateway</td><td>Request-Routing, Load Balancing, Rate Limiting</td></tr>
+      <tr><td>wo-docserver</td><td>Document-Editor-UI + WOPI-Client-Proxy</td></tr>
+      <tr><td>identity-service</td><td>JWT / OAuth2, AuthN/AuthZ, Session-Management</td></tr>
+      <tr><td>storage-service</td><td>Datei-Metadaten + Blob-Storage-Backends</td></tr>
+      <tr><td>conversion-service</td><td>Format-zu-Format-Konvertierung (27+ Konverter)</td></tr>
+      <tr><td>coauthoring-service</td><td>Echtzeit-Kollaboration auf CRDT-Basis</td></tr>
+      <tr><td>admin-panel</td><td>Admin-Dashboard, Monitoring, Konfiguration</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="open-source">
+  <div class="wrap">
+    <h2>Echt offen. Nachlesbar. Übernehmbar.</h2>
+    <p class="lead">Der komplette Stack steht unter AGPL-3.0-or-later. Enterprise-Erweiterungen sind separat lizenzierbar — der Kern bleibt immer offen.</p>
+    <div class="license">
+      <h3 style="margin-bottom:12px">Repositories auf Codeberg</h3>
+      <p style="color:var(--muted);margin-bottom:20px">Server · Fleet · Artwork — Issues, CI und Code-Review komplett öffentlich.</p>
+      <a class="cta primary" href="https://codeberg.org/World-Office">World-Office Organization ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>
+      <a href="https://codeberg.org/World-Office/server">Server</a>
+      <a href="https://codeberg.org/World-Office/artwork">Artwork</a>
+      <a href="https://codeberg.org/World-Office/server/raw/branch/main/SECURITY.md">Security</a>
+      <a href="https://codeberg.org/World-Office/server/raw/branch/main/CODE_OF_CONDUCT.md">Code of Conduct</a>
+    </p>
+    <p style="margin-top:12px">© 2026 World-Office · AGPL-3.0-or-later · Gebaut mit Rust 🦀</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1280"
+   height="320"
+   viewBox="0 0 1280 320"
+   version="1.1"
+   id="banner"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <!-- ============================================================
+       BANNER: "World-Office"
+       A wide README banner extending the Deconstructivist Prism
+       identity into a horizontal composition for project headers.
+
+       Prism positioned right-of-center, text anchored left.
+       ============================================================ -->
+  <defs
+     id="defs48">
+    <!-- Background gradient: dark void with subtle blue shift -->
+    <linearGradient
+       id="bgGrad"
+       x1="0%"
+       y1="100%"
+       x2="40%"
+       y2="0%">
+      <stop
+         offset="0%"
+         stop-color="#060610"
+         id="stop2" />
+      <stop
+         offset="50%"
+         stop-color="#0a0a1e"
+         id="stop4" />
+      <stop
+         offset="100%"
+         stop-color="#0e1030"
+         id="stop6" />
+    </linearGradient>
+    <!-- Atmospheric glow behind main structure -->
+    <radialGradient
+       id="atmosGlow"
+       cx="65%"
+       cy="50%"
+       r="35%">
+      <stop
+         offset="0%"
+         stop-color="#0d1a3a"
+         stop-opacity="0.7"
+         id="stop9" />
+      <stop
+         offset="50%"
+         stop-color="#0a0e22"
+         stop-opacity="0.25"
+         id="stop11" />
+      <stop
+         offset="100%"
+         stop-color="#0a0a1e"
+         stop-opacity="0"
+         id="stop13" />
+    </radialGradient>
+    <!-- Secondary glow on left for text area -->
+    <radialGradient
+       id="textGlow"
+       cx="25%"
+       cy="50%"
+       r="30%">
+      <stop
+         offset="0%"
+         stop-color="#0d1530"
+         stop-opacity="0.5"
+         id="stopTG1" />
+      <stop
+         offset="100%"
+         stop-color="#0a0a1e"
+         stop-opacity="0"
+         id="stopTG2" />
+    </radialGradient>
+    <!-- Cyan gradient for main facet -->
+    <linearGradient
+       id="cyanGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#00d4ff"
+         id="stop21" />
+      <stop
+         offset="100%"
+         stop-color="#007799"
+         id="stop23" />
+    </linearGradient>
+    <!-- Gold gradient -->
+    <linearGradient
+       id="goldGrad"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#e8b931"
+         id="stop26" />
+      <stop
+         offset="100%"
+         stop-color="#c49520"
+         id="stop28" />
+    </linearGradient>
+    <!-- Indigo gradient for main volume -->
+    <linearGradient
+       id="indigoGrad"
+       x1="0%"
+       y1="0%"
+       x2="80%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#252550"
+         id="stop31" />
+      <stop
+         offset="100%"
+         stop-color="#12122a"
+         id="stop33" />
+    </linearGradient>
+    <!-- Grid fade -->
+    <linearGradient
+       id="gridFade"
+       x1="50%"
+       y1="0%"
+       x2="50%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#ffffff"
+         stop-opacity="0.06"
+         id="stop36" />
+      <stop
+         offset="70%"
+         stop-color="#ffffff"
+         stop-opacity="0.015"
+         id="stop38" />
+      <stop
+         offset="100%"
+         stop-color="#ffffff"
+         stop-opacity="0"
+         id="stop40" />
+    </linearGradient>
+    <!-- Horizon glow -->
+    <radialGradient
+       id="horizonGlow"
+       cx="55%"
+       cy="85%"
+       r="45%">
+      <stop
+         offset="0%"
+         stop-color="#00d4ff"
+         stop-opacity="0.03"
+         id="stop43" />
+      <stop
+         offset="100%"
+         stop-color="#00d4ff"
+         stop-opacity="0"
+         id="stop45" />
+    </radialGradient>
+    <!-- Text glow filter -->
+    <filter
+       id="textGlowFilter"
+       x="-20%"
+       y="-20%"
+       width="140%"
+       height="140%">
+      <feGaussianBlur
+         in="SourceGraphic"
+         stdDeviation="3"
+         result="blur" />
+      <feMerge>
+        <feMergeNode
+           in="blur" />
+        <feMergeNode
+           in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- === BACKGROUND === -->
+  <path
+     id="bg"
+     style="fill:url(#bgGrad)"
+     d="M 0,0 H 1280 V 320 H 0 Z" />
+  <path
+     id="atmos"
+     style="fill:url(#atmosGlow)"
+     d="M 0,0 H 1280 V 320 H 0 Z" />
+  <path
+     id="textArea"
+     style="fill:url(#textGlow)"
+     d="M 0,0 H 1280 V 320 H 0 Z" />
+  <path
+     id="horizGlow"
+     style="fill:url(#horizonGlow)"
+     d="M 0,0 H 1280 V 320 H 0 Z" />
+
+  <!-- === PERSPECTIVE GRID (architectural floor, very subtle) === -->
+  <!-- Vanishing point at roughly (830, 100) -->
+  <g
+     opacity="0.05"
+     stroke="#00d4ff"
+     stroke-width="0.4"
+     fill="none"
+     id="gridLines">
+    <!-- Converging lines from bottom to vanishing point -->
+    <path d="M 0,320 830,100" />
+    <path d="M 150,320 830,100" />
+    <path d="M 300,320 830,100" />
+    <path d="M 450,320 830,100" />
+    <path d="M 600,320 830,100" />
+    <path d="M 750,320 830,100" />
+    <path d="M 900,320 830,100" />
+    <path d="M 1050,320 830,100" />
+    <path d="M 1200,320 830,100" />
+    <path d="M 1280,320 830,100" />
+    <!-- Cross lines -->
+    <path d="M 0,280 H 1280" />
+    <path d="M 0,250 H 1280" />
+    <path d="M 0,225 H 1280" />
+    <path d="M 0,204 H 1280" />
+    <path d="M 0,186 H 1280" />
+    <path d="M 0,170 H 1280" />
+    <path d="M 0,156 H 1280" />
+    <path d="M 0,143 H 1280" />
+    <path d="M 0,132 H 1280" />
+    <path d="M 0,122 H 1280" />
+    <path d="M 0,113 H 1280" />
+  </g>
+
+  <!-- === FLOATING GEOMETRIC SHARDS (atmosphere) === -->
+  <!-- Large floating plane - far left, subtle -->
+  <path
+     id="shard1"
+     style="opacity:0.25;fill:#1a1a3e"
+     d="m 60,180 80,-35 20,45 -80,35 z" />
+  <!-- Medium shard - mid area -->
+  <path
+     id="shard2"
+     style="opacity:0.12;fill:#004466"
+     d="m 450,60 70,-25 12,50 -70,25 z" />
+  <!-- Small triangular accent - upper area -->
+  <path
+     id="shard3"
+     style="opacity:0.06;fill:#00d4ff"
+     d="m 280,50 35,-18 -12,42 z" />
+  <!-- Thin parallelogram - bottom left -->
+  <path
+     id="shard4"
+     style="opacity:0.1;fill:#2d1b69"
+     d="m 30,260 55,-15 10,30 -55,15 z" />
+  <!-- Small accent shard - right foreground -->
+  <path
+     id="shard5"
+     style="opacity:0.08;fill:#e8b931"
+     d="m 1180,240 40,-18 -8,38 -40,18 z" />
+
+   <!-- === MAIN STRUCTURE: DECONSTRUCTIVIST PRISM (adapted for banner) === -->
+   <!-- Positioned right-of-center, topology mirrors logo.svg -->
+   <!-- Key vertices: apex(880,15), right(1100,180), rightBase(1020,295),
+        leftBase(770,220), left(660,100), mid(830,140) -->
+
+   <!-- Layer 1 (deepest): Back-right face - deep indigo volume -->
+   <path
+      id="prism1"
+      style="fill:url(#indigoGrad)"
+      d="M 880,15 1100,180 1020,295 770,220 Z" />
+   <!-- Layer 2: Left face - dark teal, creates corner depth -->
+   <path
+      id="prism2"
+      style="fill:#004466"
+      d="M 660,100 880,15 770,220 590,200 Z" />
+   <!-- Layer 3: Top face - deep purple, closes the top volume -->
+   <path
+      id="prism3"
+      style="fill:#2d1b69"
+      d="M 660,100 880,15 1100,180 830,140 Z" />
+   <!-- Layer 4: Front-right facet - electric cyan, catches light -->
+   <path
+      id="prism4"
+      style="opacity:0.92;fill:url(#cyanGrad)"
+      d="m 1100,180 1165,255 1075,295 1020,295 z" />
+   <!-- Layer 5: Lower-left cantilever - warm gold accent -->
+   <path
+      id="prism5"
+      style="opacity:0.88;fill:url(#goldGrad)"
+      d="M 590,200 770,220 720,305 530,290 Z" />
+   <!-- Layer 6: Floating shard - upper right of main structure -->
+   <path
+      id="prism6"
+      style="opacity:0.18;fill:#00d4ff"
+      d="m 1040,10 90,65 -30,85 -85,-50 z" />
+   <!-- Layer 7: Small floating element near gold accent -->
+   <path
+      id="prism7"
+      style="opacity:0.12;fill:#e8b931"
+      d="m 1135,65 50,45 -18,65 -45,-40 z" />
+
+  <!-- === EDGE HIGHLIGHTS on main structure === -->
+  <g
+     stroke-linecap="round"
+     id="edges">
+    <path
+       style="opacity:0.18;stroke:#ffffff;stroke-width:1.2"
+       d="m 880,15 220,165" />
+    <path
+       style="opacity:0.15;stroke:#ffffff;stroke-width:1"
+       d="m 1100,180 65,75" />
+    <path
+       style="opacity:0.1;stroke:#ffffff;stroke-width:0.8"
+       d="M 880,15 660,100" />
+     <path
+        style="opacity:0.12;stroke:#00d4ff"
+        d="M 1100,180 830,140" />
+    <!-- Gold edge highlight -->
+    <path
+       style="opacity:0.12;stroke:#e8b931;stroke-width:0.8"
+       d="m 590,200 180,20" />
+    <path
+       style="opacity:0.1;stroke:#e8b931"
+       d="M 770,220 720,305" />
+  </g>
+
+  <!-- === SUBTLE REFLECTION (very faint, below structure) === -->
+  <g
+     opacity="0.04"
+     transform="translate(0,320) scale(1,-1) translate(0,-320)"
+     id="reflection">
+     <path
+        style="fill:#2d1b69"
+        d="M 660,100 880,15 1100,180 830,140 Z" />
+     <path
+        style="fill:#00d4ff"
+        d="m 1100,180 1165,255 1075,295 1020,295 z" />
+    <path
+       style="fill:#e8b931"
+       d="M 590,200 770,220 720,305 530,290 Z" />
+  </g>
+
+  <!-- === DOT CLUSTER (distant architectural lights) === -->
+  <g
+     fill="#00d4ff"
+     opacity="0.05"
+     id="dots">
+    <circle cx="190" cy="120" r="1" />
+    <circle cx="205" cy="115" r="0.7" />
+    <circle cx="218" cy="125" r="0.9" />
+    <circle cx="230" cy="118" r="0.6" />
+    <circle cx="1210" cy="90" r="1" />
+    <circle cx="1225" cy="85" r="0.7" />
+    <circle cx="1238" cy="95" r="0.9" />
+    <circle cx="1250" cy="88" r="0.6" />
+  </g>
+
+  <!-- === DECORATIVE LINE (bottom edge accent) === -->
+  <line
+     x1="80"
+     y1="295"
+     x2="480"
+     y2="295"
+     stroke="#00d4ff"
+     stroke-width="0.5"
+     opacity="0.1" />
+
+  <!-- === TITLE TEXT: World-Office === -->
+  <!-- Positioned left-of-center for dynamic balance with prism on right -->
+   <text
+      x="80"
+      y="178"
+      id="title"
+      style="font-weight:300;font-size:72px;font-family:'Noto Sans','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:8;fill:#ffffff;opacity:0.95"
+      filter="url(#textGlowFilter)">World</text>
+   <text
+      x="358"
+      y="178"
+      id="title2"
+      style="font-weight:300;font-size:72px;font-family:'Noto Sans','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:8;fill:#00d4ff;opacity:0.9"
+      filter="url(#textGlowFilter)">-</text>
+   <text
+      x="382"
+      y="178"
+      id="title3"
+      style="font-weight:300;font-size:72px;font-family:'Noto Sans','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:8;fill:#ffffff;opacity:0.95"
+      filter="url(#textGlowFilter)">Office</text>
+
+  <!-- === SUBTITLE === -->
+  <text
+     x="82"
+     y="210"
+     id="subtitle"
+     style="font-weight:300;font-size:13px;font-family:'Noto Sans','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:6;fill:#00d4ff;opacity:0.35">OPEN SOURCE DOCUMENT SUITE</text>
+
+  <!-- === DECORATIVE ACCENT LINE under title === -->
+  <line
+     x1="82"
+     y1="192"
+     x2="440"
+     y2="192"
+     stroke="url(#goldGrad)"
+     stroke-width="0.8"
+     opacity="0.2" />
+</svg>

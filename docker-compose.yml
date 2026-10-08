@@ -1,0 +1,23 @@
+services:
+  web:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./assets:/usr/share/nginx/html/assets:ro
+      - ./robots.txt:/usr/share/nginx/html/robots.txt:ro
+      - ./sitemap.xml:/usr/share/nginx/html/sitemap.xml:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.worldoffice-http.rule=Host(`world-office.graphwiz.ai`)"
+      - "traefik.http.routers.worldoffice-http.entrypoints=web"
+      - "traefik.http.routers.worldoffice-http.middlewares=https-redirect@file"
+      - "traefik.http.routers.worldoffice.rule=Host(`world-office.graphwiz.ai`)"
+      - "traefik.http.routers.worldoffice.entrypoints=websecure"
+      - "traefik.http.routers.worldoffice.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.worldoffice.loadbalancer.server.port=80"
+
+networks:
+  default:
+    external: true
+    name: traefik-web
