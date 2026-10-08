@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>World-Office Testumgebung — Dokument öffnen</title>
+<title>World-Office Testumgebung — Editor öffnen</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/assets/favicon.ico">
 <style>
@@ -21,14 +21,16 @@ header img{height:30px}
 .badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.75rem;border:1px solid var(--line);color:var(--cyan);margin-left:6px}
 .badge.gold{color:var(--gold)}
 main{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:36px 24px}
-h1{font-size:1.5rem;margin-bottom:6px}
-.sub{color:var(--muted);margin-bottom:28px;font-size:.95rem}
-.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px}
-.file{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;cursor:pointer;transition:transform .15s,border-color .15s}
-.file:hover{transform:translateY(-3px);border-color:var(--cyan)}
+h1{font-size:1.45rem;margin-bottom:6px}
+h2{font-size:1.05rem;margin:26px 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.sub{color:var(--muted);margin-bottom:22px;font-size:.95rem}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:10px}
+.file{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;transition:transform .15s,border-color .15s;display:block}
+a.file:hover{transform:translateY(-3px);border-color:var(--cyan)}
 .file .ico{font-size:1.6rem;display:block;margin-bottom:10px}
-.file h2{font-size:1.02rem;margin-bottom:6px}
-.file p{color:var(--muted);font-size:.88rem}
+.file h3{font-size:1rem;margin-bottom:6px;color:var(--text)}
+.file p{color:var(--muted);font-size:.86rem}
+.new{color:var(--gold);font-size:.7rem;border:1px solid var(--gold);border-radius:99px;padding:1px 8px;vertical-align:middle;margin-left:6px}
 #editor-holder{display:none;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-bottom:14px}
 #editor-holder.full{height:78vh}
 #placeholder{border:1px dashed var(--line);border-radius:12px;padding:34px;text-align:center;color:var(--muted);font-size:.95rem}
@@ -46,51 +48,68 @@ footer a{color:var(--muted)}
   </div>
   <div>
     <span class="badge">anonym</span>
-    <span class="badge">stündlich zurückgesetzt</span>
-    <span class="badge gold">Upstream-Engine</span>
+    <span class="badge">nichts wird gespeichert</span>
+    <span class="badge gold">eigener Rust-Stack</span>
   </div>
 </header>
 
 <main>
-  <div id="picker">
-    <h1>Dokument wählen</h1>
-    <p class="sub">Kein Upload, keine Anmeldung: Wählen Sie eines der vorbereiteten Dokumente und tippen Sie direkt los. Beitreten mehrere Personen, wird gemeinsam live editiert.</p>
-    <div class="pick">
-      <div class="file" onclick="openDoc('Bericht.docx','word')">
-        <span class="ico">📝</span><h2>Bericht.docx</h2>
-        <p>Einführungsdokument mit Kontext — lesen, bearbeiten, live miterleben.</p>
-      </div>
-      <div class="file" onclick="openDoc('Notizen.docx','word')">
-        <span class="ico">🗒️</span><h2>Notizen.docx</h2>
-        <p>Freies Notizblatt zum Testen von Formatierung, Listen und Tabellen.</p>
-      </div>
+  <!-- ============ WORLD-OFFICE EIGENER STACK ============ -->
+  <h1>World-Office Editor <span class="new">Rust-Stack</span></h1>
+  <p class="sub">Unser eigener Document Server (Rust) mit der eigenen Editor-UI. Jeder Editor startet mit einem eingebauten Demo-Dokument — einfach tippen loslegen. Änderungen bleiben sitzungslokal, es wird nichts gespeichert und nichts verlässt dieses System.</p>
+  <div class="pick">
+    <a class="file" href="https://editor.cloud.graphwiz.ai/word/" target="_blank" rel="noopener">
+      <span class="ico">📝</span><h3>Text</h3><p>World Office — Document Editor (docx)</p>
+    </a>
+    <a class="file" href="https://editor.cloud.graphwiz.ai/sheet/" target="_blank" rel="noopener">
+      <span class="ico">📊</span><h3>Tabellen</h3><p>Spreadsheet Editor (xlsx)</p>
+    </a>
+    <a class="file" href="https://editor.cloud.graphwiz.ai/slide/" target="_blank" rel="noopener">
+      <span class="ico">📽️</span><h3>Präsentation</h3><p>Presentation Editor (pptx)</p>
+    </a>
+    <a class="file" href="https://editor.cloud.graphwiz.ai/pdf/" target="_blank" rel="noopener">
+      <span class="ico">📕</span><h3>PDF</h3><p>PDF Editor</p>
+    </a>
+    <a class="file" href="https://editor.cloud.graphwiz.ai/diagram/" target="_blank" rel="noopener">
+      <span class="ico">🔀</span><h3>Diagramme</h3><p>Diagram Editor (Visio-kompatibel)</p>
+    </a>
+  </div>
+
+  <!-- ============ UPSTREAM REFERENZ ============ -->
+  <h2>Upstream-Referenz (OnlyOffice-Engine)</h2>
+  <p class="sub">Zum Vergleich: die OnlyOffice-Engine, von der World-Office abgeleitet ist. Dokumente werden stündlich zurückgesetzt.</p>
+  <div class="pick">
+    <div class="file" onclick="openDoc('Bericht.docx','word')" role="button" tabindex="0">
+      <span class="ico">📝</span><h3>Bericht.docx</h3>
+      <p>Einführungsdokument — lesen, bearbeiten, live miterleben.</p>
     </div>
-    <div id="placeholder">Wählen Sie oben ein Dokument, um den Editor zu starten.</div>
+    <div class="file" onclick="openDoc('Notizen.docx','word')" role="button" tabindex="0">
+      <span class="ico">🗒️</span><h3>Notizen.docx</h3>
+      <p>Freies Notizblatt zum Testen von Formatierung, Listen und Tabellen.</p>
+    </div>
   </div>
 
   <div id="editor-holder">
     <a class="back" href="#" onclick="location.reload();return false">← zurück zur Auswahl</a>
     <div id="editor"></div>
   </div>
+  <div id="placeholder">Wählen Sie oben ein Dokument, um den Referenz-Editor zu starten.</div>
 </main>
 
 <footer>
-  Die Testumgebung läuft auf der Upstream-Engine — der World-Office-Fork ist in Entwicklung.
-  Inhalte werden stündlich gelöscht und verlassen dieses System nicht. ·
-  <a href="/">← Hauptseite</a>
+  World-Office ist eine unabhängige, Open-Source Dokumenten-Suite in Rust (AGPL-3.0). ·
+  <a href="/">← Hauptseite</a> · <a href="https://codeberg.org/World-Office/server">Codeberg</a>
 </footer>
 
 <script src="https://world-office-demo.graphwiz.ai/web-apps/apps/api/documents/api.js"></script>
 <script>
 // Doc key rotates hourly — in sync with the hourly container purge.
-// Same hour = shared live co-editing session; after the purge everyone
-// starts from the pristine predefined document again.
 function hourKey(name){
   return name + '-' + new Date().toISOString().slice(0,13);
 }
 function openDoc(name, type){
   var holder = document.getElementById('editor-holder');
-  document.getElementById('picker').style.display = 'none';
+  document.getElementById('placeholder').style.display = 'none';
   holder.style.display = 'block';
   holder.classList.add('full');
   new DocsAPI.DocEditor('editor', {
