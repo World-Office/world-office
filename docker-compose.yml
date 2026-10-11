@@ -8,6 +8,8 @@ services:
       - ./robots.txt:/usr/share/nginx/html/robots.txt:ro
       - ./sitemap.xml:/usr/share/nginx/html/sitemap.xml:ro
       - ./demo:/usr/share/nginx/html/demo:ro
+      - ./imprint:/usr/share/nginx/html/imprint:ro
+      - ./ai-statement:/usr/share/nginx/html/ai-statement:ro
       - ./nginx-default.conf:/etc/nginx/conf.d/default.conf:ro
     labels:
       - "traefik.enable=true"
