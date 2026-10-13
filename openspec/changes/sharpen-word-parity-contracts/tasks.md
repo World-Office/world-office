@@ -18,5 +18,5 @@
 
 ## 4. Vollausbau Manifest (machinell vorgeneriert, je Tab klassifiziert)
 
-- [ ] 4.1 Klassifikationslauf: alle 372 Census-Einträge je Tab (11) durch Effektklassen + Assertion-Deskriptoren ergänzen, Dialog-Sub-Features für File-Backstage + Rechtsklick-Kontextmenü nachtragen — Verifikation: Manifest ohne `unclassified`, Runner-Laufzeit < 5 min
-- [ ] 4.2 Gap-Report: Liste aller `stub`/`unverified`/Sub-Feature-Lücken als `plan/PARITY_GAPS.md` (Ausgangspunkt für spätere Feature-Tasks, ersetzt die implizite "covered"-Bilanz) — Verifikation: Report generiert, jede Lücke hat Tab+Control+fehlende Sub-Features
+- [x] 4.1 Klassifikationslauf: alle 372 Census-Einträge je Tab (11) durch Effektklassen + Assertion-Deskriptoren ergänzen, Dialog-Sub-Features für File-Backstage + Rechtsklick-Kontextmenü nachtragen — Verifikation: Manifest ohne `unclassified`, Runner-Laufzeit < 5 min
+- [x] 4.2 Gap-Report: Liste aller `stub`/`unverified`/Sub-Feature-Lücken als `plan/PARITY_GAPS.md` (Ausgangspunkt für spätere Feature-Tasks, ersetzt die implizite "covered"-Bilanz) — Verifikation: Report generiert, jede Lücke hat Tab+Control+fehlende Sub-Features
