@@ -1,6 +1,6 @@
 # WORLD-OFFICE WORKSPACE
 
-> ⚠️ **DIRECTION — REVERSED 2026-09-24.** The **Rust + TypeScript stack is CANONICAL again**: the Rust docserver (`server/services/`, container `docserver-1` on `:8082`) serves prod editor traffic (`editor.cloud.graphwiz.ai`). The Python rewrite at **`server/opencloud-docserver/`** is **DEPRECATED** (container stopped; code kept as reference — it holds line-granular pagination, header/footer page furniture, and the converter work up to commit `cf98bf78e`). See `plan/RETHINK_WORLD_OFFICE.md` (superseded) and `server/AGENTS.md`.
+> ✅ **DECOMMISSIONED 2026-10-14.** The **Rust + TypeScript stack is CANONICAL** and is the *only* stack: the Rust docserver (`server/core/crates/wo-docserver`, containers `docserver-1` prod `:8082` / `docserver` staging `:8086`) serves prod editor traffic (`editor.cloud.graphwiz.ai`) and the OpenCloud WOPI/collaboration integration (prod + staging). The Python rewrite at `server/opencloud-docserver/` is **REMOVED** (source in git history ≤ the decommission commit; the converter/pagination reference work lives at `cf98bf78e` and earlier). Its CI jobs (`docserver-tests`, `docserver-mutation-gate`) and compose services (prod `python-docserver`, staging `docserver-py`) are gone. See `plan/RETHINK_WORLD_OFFICE.md` (superseded) and `server/AGENTS.md`.
 
 > ⚠️ **OLD DIRECTION (2026-08-19 → 2026-09-24, SUPERSEDED)**: minimal Stoic Unix Python rewrite at `server/opencloud-docserver/` — retained below for history.
 
