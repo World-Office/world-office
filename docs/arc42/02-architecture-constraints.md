@@ -27,6 +27,9 @@
   router (traefik for `editor.cloud.graphwiz.ai`). Vertical scaling only.
 - **Staging parity:** staging runs the same compose shape on ports 8086.
 - Editor UI is deployed as static files into `EDITOR_UI_DIR` (volume-mounted),
-  independent of the docserver binary image.
+  independent of the docserver binary image. **Docker builds from the
+  `server/` root time out in practice (>300 s)** — editor releases are
+  direct file copies into the shared mount, verified by md5 on both
+  endpoints; image rebuilds are reserved for docserver binary changes.
 - License boundary: AGPL core vs. `services-enterprise/` (audit, SCIM,
   webhooks) — the split must stay clean.

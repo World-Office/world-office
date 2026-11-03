@@ -22,7 +22,11 @@ flowchart TB
   frontend-dist + dictionaries baked in; cargo layers cached in CI/host).
 - Editor UI is **volume-mounted over** the baked-in `editor-ui/word` — editor
   releases are file copies into `~/editor-ui-ebae8fc3/word/`
-  (`index.html editor.js i18n.js style.css`), no image rebuild.
+  (`index.html editor.js i18n.js style.css`). **One shared mount serves BOTH
+  containers** (prod :8082 and staging :8086) — a single `cp` updates both,
+  verified by md5 on each endpoint. Image rebuilds are only needed when the
+  docserver *binary* changes (a full build from the `server/` root routinely
+  exceeds 300 s and times out in the dev loop).
 - Env: `JWT_SECRET` (shared with OCIS), `WOPI_HOST_URL`, `WOPI_TOKEN_MODE=passthrough`,
   `EDITOR_UI_DIR=/app/editor-ui`, `DOCSERVER_PORT=80`.
 
@@ -42,6 +46,7 @@ not be trusted as ground truth for converter gaps.
 - Rust CI: shared cargo registry cache, `--test-threads=1` for unit tests;
   wo-pdf/wo-webdav excluded from fmt/clippy; cold-worktree `cargo test` is
   the expensive gate (>620 s).
-- Deploy sequence (editor): build gates → copy 4 files to deploy dir →
-  curl+cmp verify → pageerror sweep → prod container restart if docserver
-  binary changed (rebuild image first).
+- Deploy sequence (editor): build gates → copy 4 files to the shared mount →
+  md5-verify on :8082 AND :8086 → pageerror sweep + live behavioral probes
+  on staging → prod container restart only if the docserver binary changed
+  (rebuild image first).

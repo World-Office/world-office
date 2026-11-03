@@ -16,8 +16,8 @@ pivot format**: docx↔html fidelity is the converter frontier (see §8).
 |--------|-------|
 | **One canonical docserver binary** instead of a Python service — decommissioned 2026-10-14; editor traffic, WOPI, conversion, collab hub all in `wo-docserver` (axum + tokio). | `server/core/crates/wo-docserver` |
 | **Static-first frontend** — vendored WYSIWYG editor JS + `wo-bridge.js` WOPI adapter; deployed as plain files into `EDITOR_UI_DIR`, no server-side rendering. Editor updates roll without rebuilding Rust. | `apps/web/apps/documenteditor-wysiwyg` |
-| **Measured parity** — feature census of the reference suite (OnlyOffice) + ledger (242 features, 16 clusters, L0–L4 levels) + docx roundtrip probes; every fix lands with a gate test. | `wo-test-harness` |
-| **Agent-friendly engineering** — machine-checkable acceptance everywhere: `cargo test` gates, static substring pins in JS test gates, pageerror sweeps after deploys, agentflow campaigns with "NO CHANGE IS NOT SUCCESS" policy. | `.af-state/`, `config/tasks.json` |
+| **Measured parity** — feature census of the reference suite (OnlyOffice) + ledger (527 features, 18 clusters, L0–L4 levels; L0 = 0 since 2026-11-03) + docx roundtrip probes (31/31); every fix lands with a gate test. | `wo-test-harness` |
+| **Agent-friendly engineering** — machine-checkable acceptance everywhere: `cargo test` gates, static substring pins in JS test gates, pageerror sweeps after deploys, agentflow campaigns whose accept gates are designed to fail on a no-op change (af 0.1.0 has no built-in "NO CHANGE IS NOT SUCCESS" policy — the gates themselves must enforce it; gates must also be worktree-relative, never absolute-path `cd`). | `.af-state/`, `config/tasks.json` |
 
 ## Technology summary
 

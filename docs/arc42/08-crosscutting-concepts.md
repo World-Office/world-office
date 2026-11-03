@@ -18,33 +18,58 @@ gate tests. Conventions that have emerged:
 
 ## Fidelity gates (testing concept)
 
-Three layers, all machine-checkable:
+Four layers, all machine-checkable:
 
-1. **Unit gates** — `cargo test` per crate (wo-html 112, wo-ooxml 66,
-   wo-x2t 438 + converter gap suites like `tests/converter_gaps.rs`).
+1. **Unit gates** — `cargo test` per crate (wo-html 114, wo-ooxml 66,
+   wo-x2t 440 + converter gap suites like `tests/converter_gaps.rs`),
+   renderer-wasm 153 in the wasm path.
 2. **Roundtrip probes** — `wo-test-harness` roundtrip.cjs drives the real
    editor via Playwright, converts through the real HTTP endpoint, asserts
-   markers survive (13/13, no sanitization allowed).
-3. **Static JS gates** — substring pins (`src.includes(...)`, no regex) on
-   the landed editor bundle, because regex escapes in JS strings are a
-   recurring trap.
+   markers survive (31/31, no sanitization allowed).
+3. **Static JS gates** — 132 editor test files: substring pins
+   (`src.includes(...)`, no regex) on the landed editor bundle, because
+   regex escapes in JS strings are a recurring trap. One jest suite
+   (shift-enter behavior) runs via the root jest.config.cjs; the rest are
+   plain node scripts.
+4. **Live behavioral probes** — census acts probes + post-deploy pageerror
+   sweeps on the real staging editor.
 
 ## Parity methodology
 
-Feature census of OnlyOffice (ground truth JSONs, read-only) → ledger
-(242 features, 16 clusters, L0 unknown … L4 verified) → gap campaigns
-(agentflow) → gates land with each fix → harness reruns re-score. Noise
+Feature census of OnlyOffice (ground-truth JSONs, read-only — ribbon,
+dialogs, deep menus, context menu, **keyboard shortcut types**, behavioral
+acts probes) → ledger (**527 features, 18 clusters, L0 unknown → L4
+verified**; L0 = 0 since 2026-11-03) → gap campaigns (agentflow or manual,
+same gates) → gates land with each fix → harness reruns re-score. Noise
 filtering rules (regex, backstage exclusion lists, statusbar raw ids) live in
-`wo-test-harness/census/ledger/build.py`.
+`wo-test-harness/census/ledger/build.py`; the L2 ("acts") level promotes
+rows via live probe transitivity — `census-wo-acts.cjs` drives every visible
+`button[data-cmd]` in the real editor and records DOM mutations, and
+`COMBO_COMMAND` maps keyboard combos onto those same commands. Deep dive:
+`wo-test-harness/docs/arc42/census-ledger-pipeline.md`.
+
+**Anti-fabrication rule (2026-11-03):** audit documents and "missing feature"
+claims must derive from the census JSONs — never from memory of Word or
+another suite. Two incidents (invented Ctrl+Alt+E/M "track changes/comment"
+shortcuts; a "table sorting" gap that grep proves OnlyOffice does not ship)
+led to retracted audit rows. OO bundle greps (docker exec into the OO
+container) are the arbiter when census JSONs are silent.
 
 ## Editor conventions
 
 - Ribbon overflow scrolls by **translation**; rb-menu clicks in Playwright
   must be synthetic (`page.evaluate(el.click())`).
-- Dialogs live behind split-button menu items; dialog frame lookup is
-  ONE-SHOT (`findDialogFrame()`).
-- i18n keys must exist in BOTH `en` and `de`.
+- **All dialogs live in `index.html`** behind the `DIALOG_IDS` registry (62
+  entries); standalone dialog `*.html` files are dead code — the audit-i18n
+  gate flags any `getElementById` target missing from index.html.
+- i18n keys must exist in BOTH `en` and `de` (946 keys each, gated).
 - Landed JS must pass `node --check`.
+- Static gates use plain substring pins (`src.includes(...)`, no regex).
+- Tests pin COMMANDS, not keybindings — binding realignments (AD-12) must not
+  break the suite.
+- Live probes prefer **real key presses** (`page.keyboard.press`) plus
+  specific DOM selectors over synthetic KeyboardEvent dispatch, which is
+  unreliable for some bindings.
 - TDZ rule: guard code goes after the helper's `const` declarations.
 
 ## Operations conventions

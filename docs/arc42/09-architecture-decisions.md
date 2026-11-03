@@ -49,7 +49,38 @@ their own completion without command evidence.
 Cost: CI fragility when nightly breaks.
 
 ## AD-9: Services as decomposition surface, not production path
-**Status: accepted (interim).** `services/` are thin axum binaries; only
-storage-service is fully CRUD-implemented. Production traffic runs through
-wo-docserver. Do not split the docserver until a scaling or team boundary
-demands it.
+**Status: accepted (interim).** `services/` are thin axum binaries (+ one
+Node.js service, `services/server/` — DocBuilder CLI, own ESLint/Prettier
+CI); only storage-service is fully CRUD-implemented. Production traffic runs
+through wo-docserver. Do not split the docserver until a scaling or team
+boundary demands it.
+
+## AD-10: Shared-mount direct-copy editor deploys
+**Status: accepted (2026-11).** Editor releases are `cp` of the 4 files into
+`~/editor-ui-ebae8fc3/word/`, one mount serving BOTH prod (:8082) and staging
+(:8086), md5-verified on both endpoints. Docker builds from the `server/`
+root routinely exceed 300 s and time out in the dev loop — image rebuilds
+are reserved for docserver binary changes. Trade-off accepted: no atomic
+prod/staging split on the editor surface.
+
+## AD-11: Audit claims derive from census JSONs, not memory
+**Status: accepted (2026-11-03).** After two fabrication incidents (invented
+Ctrl+Alt+E/M shortcut rows; a "table sorting" gap OnlyOffice does not
+ship), the rule is: every audit row / "missing" claim must cite a census
+JSON, and OO-bundle greps (docker exec) are the arbiter when census is
+silent. Corrections land as retractions with evidence, not silent edits.
+
+## AD-12: OO census wins keyboard-binding collisions
+**Status: accepted (2026-11-03).** When a combo collides with the OO census,
+WO binds to the OO combo (Ctrl+Shift+L → bulleted list, Ctrl+Shift+8 →
+formatting marks, Ctrl+Shift+P → page number; plain Ctrl+L → left align).
+Word-convention bindings (Ctrl+1/2/5, F7) are added only in OO-free slots.
+Rationale: parity is measured against OO; tests pin commands, not bindings,
+so realignments don't break the suite.
+
+## AD-13: All dialogs live in index.html
+**Status: accepted (2026-11-03).** Every dialog is markup inside
+`index.html`, registered in the `DIALOG_IDS` array (62 entries), closed by
+the generic Escape handler. Standalone `dialog-*.html` files are dead code
+by construction (nothing fetches or iframes them) — the audit-i18n
+dead-wiring gate is the enforcement; dead files get deleted on discovery.
