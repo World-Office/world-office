@@ -43,5 +43,10 @@ Q6 Portability
  └─ Q6.2 WASM targets build in dedicated CI workflow
 ```
 
-Not yet formally measured: latency/throughput budgets (baseline notes in
-`plan/performance.md`), availability targets (single-host today).
+Not yet formally measured: latency/throughput budgets (**first measured
+editor baseline landed 2026-11-03** in
+`wo-test-harness/census/performance/baseline-wo.json` — cold load 176 ms,
+typing 124 ms, select-all+bold 26 ms, table insert 54 ms; service-startup
+figures remain `(estimate)` placeholders in `server/plan/performance.md`,
+last updated 2026-07-18, awaiting production measurement). Availability
+targets: single-host today, no SLOs yet (see §11).

@@ -51,5 +51,5 @@ reverse TLS termination and DNS (host-level traefik/caddy).
 | WOPI server endpoints | OCIS collaboration service | HTTP + JWT access tokens |
 | Editor UI HTTP | Browser | static files over HTTP(S) |
 | Conversion API | internal tools, tests, harness | JSON `{source_format, target_format, data: base64}` |
-| Discovery/health | orchestrators | `/health` (container), `/healthz` (HTTP) |
+| Discovery/health | orchestrators | `/health` (container healthcheck) |
 | Nextcloud app | Nextcloud servers | PHP app embedding the editor |

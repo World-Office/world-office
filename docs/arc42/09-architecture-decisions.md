@@ -2,6 +2,12 @@
 
 Short-form ADR digest (full history lives in git + `plan/`).
 
+> **Numbering:** this set is the *product* series `AD-1..AD-13`. The
+> test-harness repo carries a **separate** series `ADR-01..ADR-18`
+> (see `wo-test-harness/docs/arc42/09-*`) for harness-specific decisions —
+> the numbers overlap by coincidence, not by reference. Cite as `AD-n` here,
+> `ADR-n` there.
+
 ## AD-1: Rust core + TypeScript frontend
 **Status: accepted (2026).** 26-crate Rust core for formats/protocols; TS
 monorepo for editors. Rationale: single-language fidelity core, WASM path to

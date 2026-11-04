@@ -48,8 +48,9 @@ harness roundtrip.cjs:
 
 ## R5 — Deployment / health
 
-- Container healthcheck: `curl -f http://localhost:80/health`.
-- Liveness probe used by ops/scripts: `GET /healthz`.
+- Container healthcheck (docker-compose): `curl -f http://localhost:80/health`.
+  The docserver exposes a single health route (`/health`, `health_handler`)
+  used by both container status and ops probes.
 - After every editor deploy: pageerror sweep (0 JS page errors expected),
   live behavioral probes on staging :8086 (real key presses, specific DOM
   selectors — synthetic KeyboardEvents are unreliable for some bindings),

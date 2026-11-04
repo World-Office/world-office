@@ -16,7 +16,9 @@
 - Single primary maintainer + agentic dev loop (agentflow campaigns, worktrees,
   strict task gates). Everything must be verifiable by commands (tests,
   gates, probes), because agents need machine-checkable acceptance criteria.
-- Two public remotes (Codeberg origin + GitHub mirror); pushes go to both.
+- Two public GitHub remotes: `origin`
+  (`github.com:tobias-weiss-ai-xr/world-office`)
+  + `github-org` (`github.com:World-Office/world-office`); pushes go to both.
 
 ## Product / deployment constraints
 
