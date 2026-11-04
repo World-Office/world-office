@@ -17,7 +17,7 @@
 | **COMBO_COMMAND** | The build.py map from keyboard combo → command name; a shortcut row reaches L2 when its combo's command is proven mutated by an acts probe. |
 | **DIALOG_IDS** | The 62-entry registry in editor.js of every dialog id; all dialog markup lives in index.html (AD-13); the audit-i18n gate enforces that dialog markup stays in index.html (standalone dialog files are dead code). |
 | **census-shortcuts** | The keyboard-shortcut census verdict table (matched/diverged/native/nav/missing) in `wo-test-harness/census/`; derives from OO's bundled keymap, scored against a static WO lookup. |
-| **wo-x2t** | Conversion orchestrator crate: 27 native converters, chain support; the html↔docx path is the parity frontier. |
+| **wo-x2t** | Conversion orchestrator crate: 60 registered converter pairs (ConversionRouter in `router.rs`), chain support; the html↔docx path is the parity frontier. |
 | **WOPI** | Web Application Open Platform Interface — the HTTP protocol between editor (host) and storage (OCIS). |
 | **wo-bridge.js** | WOPI adapter gluing the vendored WYSIWYG editor to the docserver. |
 | **agentflow (af)** | Campaign orchestrator that dispatches implementation tasks to worker agents in isolated git worktrees (`config/tasks.json`). |

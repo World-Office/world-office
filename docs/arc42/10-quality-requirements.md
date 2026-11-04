@@ -25,13 +25,15 @@ Q3 Security
  ├─ Q3.2 Weekly audit job (cargo audit + pnpm audit --audit-level=high)
  └─ Q3.3 License hygiene: AGPL core vs. private enterprise repo split
 Q4 Operability & performance
- ├─ Q4.1 Health endpoints (/health container check, /healthz probe)
+ ├─ Q4.1 Health endpoint `/health` (container healthcheck; no separate
+ │       /healthz route)
  ├─ Q4.2 Deploy verification: md5 both endpoints + pageerror sweep +
  │       live behavioral probes
  ├─ Q4.3 First measured perf baseline (2026-11-03, benchmark.js on
- │       staging :8086): cold load ~103 ms, typing latency ~1 ms,
- │       select-all+bold on large doc ~21 ms, table insert+banded
- │       ~1.26 s — PERF-002 (rAF) deferred until a re-measure justifies it
+ │       staging :8086): cold load 176 ms, typing latency 124 ms,
+ │       select-all+bold on large doc 26 ms, table insert 54 ms,
+ │       banded toggle 16 ms — PERF-002 (rAF) deferred until a
+ │       re-measure justifies it
  └─ Q4.4 Observability stack available (Grafana/Prometheus/Loki/Tempo
          under server/observability)
 Q5 Maintainability

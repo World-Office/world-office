@@ -6,7 +6,7 @@ The architecture follows one dominant idea and four supporting tactics.
 
 Every format crate parses its binary/XML format into shared JSON-ish document
 models and serializes back (`FormatRoundtrip` trait). Conversion = parse to a
-model, transform, serialize to the target (`wo-x2t`, 27 native converters with
+model, transform, serialize to the target (`wo-x2t`, 60 registered converter pairs with
 chain support). The browser editors speak HTML — so **HTML is the editor-facing
 pivot format**: docx↔html fidelity is the converter frontier (see §8).
 

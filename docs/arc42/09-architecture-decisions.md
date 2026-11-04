@@ -9,7 +9,8 @@ Short-form ADR digest (full history lives in git + `plan/`).
 > `ADR-n` there.
 
 ## AD-1: Rust core + TypeScript frontend
-**Status: accepted (2026).** 26-crate Rust core for formats/protocols; TS
+**Status: accepted (2026).** 35-crate Rust core (27 workspace members +
+8 sibling crates) for formats/protocols; TS
 monorepo for editors. Rationale: single-language fidelity core, WASM path to
 the browser, no proprietary engine.
 

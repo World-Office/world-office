@@ -22,7 +22,7 @@ World-Office
 | Text formats | wo-txt, wo-rtf, wo-html, wo-fb2, wo-epub | `FormatRoundtrip` parsers |
 | Office formats | wo-ooxml (DOCX/XLSX/PPTX), wo-odf, wo-msbinary, wo-hwp | the fidelity-critical family |
 | Fixed-layout | wo-pdf, wo-pdf-render, wo-djvu, wo-xps, wo-ofd, wo-visio | read/render |
-| Conversion | **wo-x2t** (+ wo-x2t-wasm) | 27 native converters, chaining |
+| Conversion | **wo-x2t** (+ wo-x2t-wasm) | 60 registered converter pairs, chaining |
 | Rendering | wo-renderer (+ wasm), wo-fonts, wo-raster, wo-docx-renderer | canvas pipeline |
 | Editing models | wo-sheet, wo-slide, wo-chart, wo-formula, wo-spell | per-domain models |
 | Protocols/apps | **wo-docserver**, wo-wopi, wo-webdav, wo-route, wo-ooxml-ops | network + operations layer |
@@ -62,7 +62,7 @@ test files** — 131 plain-node scripts + 1 jest suite)
 | Track changes | ~4037–4263 | client-side tracked ins/del markers (`beforeinput` interception), accept/reject per change, review list — no backend persistence yet |
 | Page-number field | ~1245 | `insertPageNumber` plants `<span class="page-number">` (converter emits a PAGE field); Ctrl+Shift+P per OO census |
 | Formula engine | ~2455 | `formulaCellValue`: table-cell `=SUM()` etc. with data-formula attributes + recalc |
-| i18n | `i18n.js` | en + de maps; EVERY key must exist in BOTH (946 keys, audit-i18n gate) |
+| i18n | `i18n.js` | en + de maps; EVERY key must exist in BOTH (981-key catalogs; audit-i18n: 947 referenced, PASS) |
 
 ## Level 3 — the converter fidelity path (parity frontier)
 

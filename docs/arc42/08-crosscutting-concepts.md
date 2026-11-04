@@ -62,7 +62,8 @@ container) are the arbiter when census JSONs are silent.
 - **All dialogs live in `index.html`** behind the `DIALOG_IDS` registry (62
   entries); standalone dialog `*.html` files are dead code — the audit-i18n
   gate flags any `getElementById` target missing from index.html.
-- i18n keys must exist in BOTH `en` and `de` (946 keys each, gated).
+- i18n keys must exist in BOTH `en` and `de` (catalogs 981 keys each,
+  audit-i18n: referenced 947, PASS).
 - Landed JS must pass `node --check`.
 - Static gates use plain substring pins (`src.includes(...)`, no regex).
 - Tests pin COMMANDS, not keybindings — binding realignments (AD-12) must not
