@@ -20,7 +20,7 @@ Documented with the [arc42](https://arc42.org) template. One file per section.
 **Status:** initial version 2026-10-27, written against server @ `bc57a9214`;
 **comprehensively updated 2026-11-03** (ledger 527/18 with L0 = 0, roundtrip
 31/31, editor internals §5.3, ADRs 10–13, perf baseline, audit-integrity
-rules) against server @ `8b6a3ac0a`.
+rules) against server @ `3d74e0601`; anchors re-verified by grep before commit.
 Replaces the 2026-09-05 Python-era set (FastAPI docserver, decommissioned
 2026-10-14) — those files are preserved under
 [history/](history/) for the record.

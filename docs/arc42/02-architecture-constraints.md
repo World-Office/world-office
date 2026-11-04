@@ -25,7 +25,7 @@
   docserver and OCIS.
 - **Single prod host** (`192.168.42.42`): OpenCloud stack + docserver + edge
   router (traefik for `editor.cloud.graphwiz.ai`). Vertical scaling only.
-- **Staging parity:** staging runs the same compose shape on ports 8086.
+- **Staging parity:** staging runs the same compose shape on port 8086.
 - Editor UI is deployed as static files into `EDITOR_UI_DIR` (volume-mounted),
   independent of the docserver binary image. **Docker builds from the
   `server/` root time out in practice (>300 s)** — editor releases are

@@ -50,18 +50,18 @@ World-Office
   collaboration-client/-react, sdk-bridge, plugin-sdk, i18n.
 
 ## Level 3 — the word editor's internal structure
-(`documenteditor-wysiwyg/editor.js`, ~13k lines, guarded by **132 static
-test files** run as plain node scripts)
+(`documenteditor-wysiwyg/editor.js`, ~14k lines (14,092), guarded by **132
+test files** — 131 plain-node scripts + 1 jest suite)
 
 | Block | Anchor | Role |
 |-------|--------|------|
 | `runCommand(cmd, val)` | top | the single command surface: every feature funnels through here (`data-cmd` delegation, keybindings, dialogs all call it) |
-| `DIALOG_IDS` registry | ~line 2038 | the **62 dialogs**; ALL dialog markup lives in `index.html` (overlays), a generic Escape handler closes them; standalone dialog `*.html` files are dead code and get deleted (enforced by the audit-i18n dead-wiring gate) |
-| Keydown C1 block | ~line 11065 | all Ctrl/Meta combos; `const k = ev.key.toLowerCase()` at block top; bindings follow the **OO census** where combos collide (AD-12) |
+| `DIALOG_IDS` registry | ~line 2038 | the **62 dialogs**; ALL dialog markup lives in `index.html` (overlays), a generic Escape handler closes them; standalone dialog `*.html` files are dead code and get deleted (the audit-i18n gate enforces that dialog markup lives in index.html) |
+| Keydown blocks | ~lines 10819 / 11001 | the Ctrl/Meta combo handlers (two blocks, each with `const k = ev.key.toLowerCase()` at top); bindings follow the **OO census** where combos collide (AD-12) |
 | Table panel | ~6900–7250 | applyTableBackground/Banded/BandedCols + `syncTablePanelControls` + right-panel listeners (banded rows AND columns = OO tableStyler parity) |
-| Track changes | ~4037–4260 | client-side tracked ins/del markers (`beforeinput` interception), accept/reject per change, review list — no backend persistence yet |
+| Track changes | ~4037–4263 | client-side tracked ins/del markers (`beforeinput` interception), accept/reject per change, review list — no backend persistence yet |
 | Page-number field | ~1245 | `insertPageNumber` plants `<span class="page-number">` (converter emits a PAGE field); Ctrl+Shift+P per OO census |
-| Formula engine | ~2448 | `formulaCellValue`: table-cell `=SUM()` etc. with data-formula attributes + recalc |
+| Formula engine | ~2455 | `formulaCellValue`: table-cell `=SUM()` etc. with data-formula attributes + recalc |
 | i18n | `i18n.js` | en + de maps; EVERY key must exist in BOTH (946 keys, audit-i18n gate) |
 
 ## Level 3 — the converter fidelity path (parity frontier)

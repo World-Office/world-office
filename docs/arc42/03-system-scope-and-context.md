@@ -34,7 +34,7 @@ flowchart LR
 - wo-docserver: serves editor UI, WOPI server endpoints, conversion API
   (`POST /api/conversion/convert`), collaboration hub state
   (`GET /api/documents/<id>/collab/state`), local document store.
-- Rust core: 26 crates (16 format parsers with `FormatRoundtrip`, renderer,
+- Rust core: 35 crates (16 format parsers with `FormatRoundtrip`, renderer,
   fonts, raster, wo-x2t converter orchestrator, spell, route).
 - Services (thin axum/tokio): api-gateway, identity, session, storage,
   conversion, coauthoring, mcp-server, admin-panel.
