@@ -16,7 +16,7 @@ Test page at `world-office.graphwiz.ai/demo/` (directory-mounted → git pull pr
 (integrated with ocis via WOPI — the production setup, deployed via
 `/home/weiss/compose-cutover/docker-compose.yml`, image `worldoffice/documentserver:latest`,
 rebuilt by `.github/workflows/build-docserver-image.yml` on the legion runner; editor UI
-staged at `/home/weiss/editor-ui-b2c1c282`). All five editors (`/word/ /sheet/ /slide/
+served from `/home/weiss/editor-ui-latest` — since 2026-11-16 `/word/` is the React canvas editor (documenteditor-react); the python-lineage wysiwyg editor is retired from deployment). All five editors (`/word/ /sheet/ /slide/
 /pdf/ /diagram/`) auto-load the baked-in `demo.docx` via the docserver's own `/demo/info` +
 `/demo/document` endpoints (DocumentStore.ts defaults — no ocis, no auth), `UserCanWrite:
 true`. Typing is in-session only; a save would need a WOPI token/lock that the demo doc
