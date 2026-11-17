@@ -16,3 +16,5 @@
 .tf-worktrees/
 .wo-worktrees/
 *.log
+node_modules/
+CGC_REPORT.md
